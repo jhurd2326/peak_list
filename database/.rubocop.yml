@@ -1,0 +1,66 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - "vendor/**/*"
+    - "db/schema.rb"
+    - "db/seeds.rb"
+
+Metrics/LineLength:
+  Max: 120
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Style/TrailingCommaInArguments:
+  # If `comma`, the cop requires a comma after the last argument, but only for
+  # parenthesized method calls where each argument is on its own line.
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInLiteral:
+  # If `comma`, the cop requires a comma after the last item in an array or
+  # hash, but only when each item is on its own line.
+  EnforcedStyleForMultiline: comma
+
+Style/MutableConstant:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: true
+Style/EmptyMethod:
+  Enabled: false
+Metrics/BlockLength:
+ Exclude:
+   - 'Rakefile'
+   - '**/*.rake'
+   - 'spec/**/*.rb'
+   - 'config/environments/*'
+   - 'config/routes.rb'
+   - 'test/**/*'
+
+Style/PercentLiteralDelimiters:
+  Description: 'Use `%`-literal delimiters consistently'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#percent-literal-braces'
+  Enabled: true
+  PreferredDelimiters:
+    default: ()
+    '%i': '()'
+    '%I': '()'
+    '%r': '{}'
+    '%w': '()'
+    '%W': '()'
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
