@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+# Takes in an OSM file containing just mountain peaks and parses the XML into JSON
+# Openstreetmap.org's nominatim app is used for reverse geocoding the cooridinates
+# and requires a contact email in the header of each request.  OSM asks to keep
+# the requests at a maximum of one per second.
+
 require "nokogiri"
 require "json"
 require "geocoder"
@@ -60,7 +65,7 @@ class MountainParser
   end
 end
 
-if ARGV.size < 2
+if ARGV.size < 3
   puts "Usage: #{$PROGRAM_NAME} osm_file output_json email_address"
   exit 1
 end
