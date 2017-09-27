@@ -6,11 +6,12 @@
 
   if(isset($_POST["username"], $_POST["p"]))
   {
-    $username = $_POST["username"];
-    $password = $_POST["p"];
+    $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, "p", FILTER_SANITIZE_STRING);
 
-    if(login($username, $password, $mysqli) == true)
+    if(register($username, $password, $mysqli) == true)
     {
+      login($username, $password, $mysqli);
       header("Location: ../protected_page.php");
     }
     else

@@ -1,5 +1,6 @@
 <?php
   include_once "php/functions.php";
+  session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,7 @@
       </li>
       <li>Your password and confirmation must match exactly</li>
     </ul>
-    <form action="php/registration.php" method="post" name="registration_form">
+    <form action="php/process_registration.php" method="post" name="registration_form">
       Username: <input type="text" name="username" id="username" /><br>
       Password: <input type="password" name="password" id="password"/><br>
       Confirm password: <input type="password" name="confirmation" id="confirmation" /><br>

@@ -2,16 +2,7 @@
   include_once "php/db_connect.php";
   include_once "php/functions.php";
 
-  sec_session_start();
-
-  if(check_login($mysqli) == true)
-  {
-    $logged_in = true;
-  }
-  else
-  {
-    $logged_in = false;
-  }
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -33,8 +24,9 @@
       Password: <input type="password" name="password" id="password" />
       <input type="button" value="Login" onclick="formhash(this.form, this.form.password);" />
     </form>
+    <a href="php/logout.php">Logout</a>
     <?php
-      if($logged_in == true)
+      if(check_login($mysqli) == true)
       {
         echo "<p>Currently logged in as " . htmlentities($_SESSION['username']) . ".</p>";
       }
