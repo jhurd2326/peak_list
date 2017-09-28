@@ -16,7 +16,7 @@
     }
     else
     {
-      header("Location: ../index.php?error=1");
+      header("Location: ../register.php?error=1");
     }
   }
   else { echo "Invalid Request"; }
