@@ -65,7 +65,9 @@
     else { return false; }
   }
 
-  function register($username, $password, $mysqli)
+  /*** Register a user ***/
+  function register($username, $password, $email, $first_name, $last_name,
+    $age, $phone, $address, $mysqli)
   {
     $error_msg = "";
     $sql = "SELECT id FROM users where username = ? LIMIT 1";
@@ -90,10 +92,13 @@
     if(empty($error_msg))
     {
       $password = password_hash($password, PASSWORD_DEFAULT);
-      $sql = "INSERT INTO users (username, password_hash) VALUES (?, ?)";
+      $sql = "INSERT INTO users (username, password_hash, first_name, last_name,
+              age, telephone, email, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
       if($stmt = $mysqli -> prepare($sql))
       {
-        $stmt -> bind_param("ss", $username, $password);
+        $stmt -> bind_param("ssssssss", $username, $password, $first_name,
+                                        $last_name, $age, $phone, $email, $address);
         $stmt -> execute();
         $stmt -> close();
         return true;

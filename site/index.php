@@ -11,40 +11,53 @@
     <title>Login</title>
 
     <link rel="stylesheet" href="stylesheets/custom.css" />
+  </head>
+  <body>
+    <div class="background flex-center">
+      <div class="container flex-center">
+        <?php
+          if(isset($_GET["error"]))
+          {
+            echo "<p class='error'>Error Logging In</p>";
+          }
+        ?>
+        <?php if(check_login($mysqli) == false): ?>
+          <div class="card card-cascade login-card animated fadeIn">
+            <div class="card-header default-color text-center">
+              <h2 class="h2-responsive" style="color: white;">Sign-In</h2>
+            </div>
+            <div class="card-body mx-4">
+              <form action="php/process_login.php" method="post" name="login_form">
+                <div class="md-form">
+                  <input type="text" name="username" id="username" class="form-control" />
+                  <label for="username">Username</label>
+                </div>
+                <div class="md-form">
+                  <input type="password" name="password" id="password" class="form-control" />
+                  <label for="password">Password</label>
+                </div>
+                <div class="text-center my-3">
+                  <input type="button" value="Login" onclick="formhash(this.form, this.form.password);" class="btn btn-default"/>
+                </div>
+              </form>
 
+              <p class="text-center my-3">
+                Don't have an account?
+                <a href='register.php' style="color: #2BBBAD">Register</a>
+              </p>
+            </div>
+          </div>
+        <?php else: ?>
+          <a href="php/logout.php" class="btn btn-default">Logout</a>
+        <?php endif; ?>
+      </div>
+    </div>
+
+    <script type="text/JavaScript" src="javascripts/jquery-3.2.1.min.js"></script>
     <script type="text/JavaScript" src="javascripts/sha512.js"></script>
     <script type="text/JavaScript" src="javascripts/forms.js"></script>
-    <script type="text/JavaScript" src="javascripts/jquery-3.2.1.min.js"></script>
     <script type="text/JavaScript" src="javascripts/popper.min.js"></script>
     <script type="text/JavaScript" src="javascripts/bootstrap.min.js"></script>
     <script type="text/JavaScript" src="javascripts/mdb.min.js"></script>
-
-  </head>
-  <body>
-    <div class="container">
-      <?php
-        if(isset($_GET["error"]))
-        {
-          echo "<p class='error'>Error Logging In</p>";
-        }
-      ?>
-      <form action="php/process_login.php" method="post" name="login_form">
-        Username: <input type="text" name="username" id="username" />
-        Password: <input type="password" name="password" id="password" />
-        <input type="button" value="Login" onclick="formhash(this.form, this.form.password);" />
-      </form>
-      <a href="php/logout.php">Logout</a>
-      <?php
-        if(check_login($mysqli) == true)
-        {
-          echo "<p>Currently logged in as " . htmlentities($_SESSION['username']) . ".</p>";
-        }
-        else
-        {
-          echo "<p>Currently logged out</p>";
-          echo "<p><a href='register.php'>Register</a></p>";
-        }
-      ?>
-    </div>
   </body>
 </html>
