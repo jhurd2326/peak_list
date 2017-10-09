@@ -14,6 +14,7 @@ html, body, .background{
   background-size: cover;
 }
 
-.login-card {
-  width: 45%;
+.inline-form-text {
+  color: grey;
+  font-size: 70%;
 }
