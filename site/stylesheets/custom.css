@@ -1,0 +1,20 @@
+@import url("bootstrap.min.css");
+@import url("mdb.min.css");
+
+/*** Put custom styles below ***/
+
+html, body, .background{
+  height: 100%;
+}
+.background {
+  background: url("../img/blue_ridge.JPG")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.inline-form-text {
+  color: grey;
+  font-size: 70%;
+}
