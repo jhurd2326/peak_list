@@ -2,6 +2,7 @@
   include_once "php/functions.php";
   session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,10 +13,9 @@
   </head>
   <body>
     <div class="background">
-      <div class="container h-100">
-        <?php if(!empty($error_msg)) { echo $error_msg; } ?>
+      <div class="container">
         <div class="row flex-center">
-          <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-12 col-lg-4 mt-4">
             <div class="card animated fadeIn">
               <div class="card-header default-color text-center">
                 <h2 class="h2-responsive" style="color: white;">Register</h2>
@@ -50,8 +50,8 @@
                     <label for="last_name">Last Name</label>
                   </div>
                   <div class="md-form">
-                    <input type="text" name="age" id="age" />
-                    <label for="age">Age</label>
+                  <input type="number" name="age" id="age" />
+                  <label for="age">Age</label>
                   </div>
                   <div class="md-form">
                     <input type="text" name="phone" id="phone" />

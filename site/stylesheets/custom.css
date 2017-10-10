@@ -5,6 +5,7 @@
 
 html, body, .background{
   height: 100%;
+  overflow: hidden;
 }
 .background {
   background: url("../img/blue_ridge.JPG")no-repeat center center fixed;
@@ -12,9 +13,39 @@ html, body, .background{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .inline-form-text {
   color: grey;
   font-size: 70%;
+}
+
+@media only screen and (max-width : 320px) {
+  .card-body{
+    height: 400px;
+    overflow-y: scroll;
+
+  }
+  .mt-4{
+    margin-top: 15%!important;
+  }
+}
+@media only screen and (min-width : 321px) and (max-width : 375px) {
+  .card-body{
+    height: 460px;
+    overflow-y: scroll;
+  }
+  .mt-4{
+    margin-top: 20%!important;
+  }
+}
+@media only screen and (min-width : 376px) and (max-width : 414px) {
+  .card-body{
+    height: 500px;
+    overflow-y: scroll;
+  }
+  .mt-4{
+    margin-top: 20%!important;
+  }
 }
