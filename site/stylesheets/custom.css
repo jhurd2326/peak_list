@@ -5,6 +5,7 @@
 
 html, body, .background{
   height: 100%;
+  overflow: hidden;
 }
 .background {
   background: url("../img/blue_ridge.JPG")no-repeat center center fixed;
@@ -12,9 +13,17 @@ html, body, .background{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .inline-form-text {
   color: grey;
   font-size: 70%;
+}
+
+@media only screen and (min-width : 320px) and (max-width : 414px){
+   .card-body {
+     height: 80vh;
+     overflow-y: scroll;
+   }
 }
