@@ -28,34 +28,66 @@
                 <h2 class="h2-responsive" style="color: white;">Search Mountains</h2>
               </div>
               <div class="card-body">
-                <form action="../php/search_mountains.php" method="post" name="mountain_search_form">
-                  <div class="md-form">
-                    <input type="text" name="name" id="name" class="form-control" />
-                    <label for="name">Name</label>
+                <form action="results.php" method="post" name="mountain_search_form">
+
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="md-form">
+                        <input type="text" name="name" id="name" class="form-control" />
+                        <label for="name">Name</label>
+                      </div>
+                    </div>
                   </div>
-                  <div class="md-form">
-                    <input type="text" name="state" id="state" class="form-control" />
-                    <label for="state">State</label>
+
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="md-form">
+                        <input type="text" name="country" id="country" class="form-control" />
+                        <label for="country">Country</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="md-form">
+                        <input type="text" name="state" id="state" class="form-control" />
+                        <label for="state">State</label>
+                      </div>
+                    </div>
                   </div>
-                  <div class="md-form">
-                    <input type="text" name="country" id="country" class="form-control" />
-                    <label for="country">Country</label>
+
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="md-form">
+                        <input type="number" name="max_elevation" id="max_elevation" class="form-control" />
+                        <label for="max_elevation">Maximum Elevation</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="md-form">
+                        <input type="number" name="min_elevation" id="min_elevation" class="form-control" />
+                        <label for="min_elevation">Minimum Elevation</label>
+                      </div>
+                    </div>
                   </div>
-                  <div class="md-form">
-                    <input type="text" name="latitude" id="latitude" class="form-control" />
-                    <label for="latitude">Latitude</label>
+
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="md-form">
+                        <input type="number" name="latitude" id="latitude" class="form-control" />
+                        <label for="latitude">Latitude</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="md-form">
+                        <input type="number" name="longitude" id="longitude" class="form-control" />
+                        <label for="longitude">Longitude</label>
+                      </div>
+                    </div>
                   </div>
-                  <div class="md-form">
-                    <input type="text" name="longitude" id="longitude" class="form-control" />
-                    <label for="longitude">Longitude</label>
-                  </div>
-                  <div class="md-form">
-                    <input type="text" name="elevation" id="elevation" class="form-control" />
-                    <label for="elevation">Elevation</label>
-                  </div>
+
                   <div class="text-center my-3">
                     <input type="button" value="Search" onclick="this.form.submit();" class="btn btn-default"/>
                   </div>
+
                 </form>
               </div>
             </div>

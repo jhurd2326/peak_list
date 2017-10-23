@@ -117,11 +117,21 @@
   {
     $sql = "SELECT * FROM mountains where";
 
-    $attributes = array(":name", ":state", ":country", ":latitude", ":longitude", ":elevation");
+    $attributes = array(":name", ":state", ":country", ":latitude", ":longitude",
+                        ":max_elevation", "min_elevation");
 
-    $query_options = array(" name = :name and", " state = :state and", " country = :country and",
-                           " latitude = :latitude and", " longitude = :longitude and",
-                           " elevation = :elevation and");
+    $query_options = array(" name like :name and", " state = :state and", " country = :country and",
+                           " latitude like :latitude and", " longitude like :longitude and",
+                           " elevation <= :max_elevation and", " elevation >= :min_elevation and");
+
+    if(!empty($params[0]))
+      $params[0] = "%" . $params[0] . "%";
+
+    if(!empty($params[3]))
+      $params[3] .= "%";
+
+    if(!empty($params[4]))
+      $params[4] .= "%";
 
     foreach($params as $key => $param)
       if(!empty($param))
@@ -138,6 +148,8 @@
 
       if($query -> execute())
         return $query -> fetchAll();
+      else
+        return array();
     }
     else { return array(); }
   }
