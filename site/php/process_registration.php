@@ -17,9 +17,9 @@
     $address =    filter_input(INPUT_POST, "address", FILTER_SANITIZE_STRING);
 
     if(register($username, $password, $email, $first_name, $last_name, $age,
-      $phone, $address, $mysqli) == true)
+      $phone, $address, $dbh) == true)
     {
-      login($username, $password, $mysqli);
+      login($username, $password, $dbh);
       header("Location: ../protected_page.php");
     }
     else

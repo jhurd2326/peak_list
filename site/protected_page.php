@@ -11,7 +11,7 @@ session_start();
         <title>Secure Login: Protected Page</title>
     </head>
     <body>
-        <?php if (check_login($mysqli) == true) : ?>
+        <?php if (check_login($dbh) == true) : ?>
             <p>Welcome <?php echo htmlentities($_SESSION['username']); ?>!</p>
             <p>
                 This is an example protected page.  To access this page, users

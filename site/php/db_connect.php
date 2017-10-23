@@ -1,3 +1,3 @@
 <?php
-  $mysqli = new mysqli("localhost", "root", NULL, "cpsc_4620");
+  $dbh = new PDO("mysql:host=localhost;dbname=cpsc_4620", "root", NULL);
 ?>

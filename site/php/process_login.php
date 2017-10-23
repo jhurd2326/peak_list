@@ -9,7 +9,7 @@
     $username = $_POST["username"];
     $password = $_POST["p"];
 
-    if(login($username, $password, $mysqli) == true)
+    if(login($username, $password, $dbh) == true)
     {
       header("Location: ../protected_page.php");
     }

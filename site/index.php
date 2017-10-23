@@ -21,7 +21,7 @@
             echo "<p class='error'>Error Logging In</p>";
           }
         ?>
-        <?php if(check_login($mysqli) == false): ?>
+        <?php if(check_login($dbh) == false): ?>
           <div class="row flex-center">
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
               <div class="card animated fadeIn">
