@@ -28,7 +28,7 @@
                 <h2 class="h2-responsive" style="color: white;">Search Mountains</h2>
               </div>
               <div class="card-body">
-                <form action="results.php" method="post" name="mountain_search_form">
+                <form action="results.php?page=1" method="post" name="mountain_search_form">
 
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

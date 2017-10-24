@@ -153,4 +153,22 @@
     }
     else { return array(); }
   }
+
+  /*** Display the pagination links for the given array and page number ***/
+  function displayPagination($arr, $page_number, $limit)
+  {
+    $uri =  str_replace(("?page=" . $page_number), "", $_SERVER["REQUEST_URI"]);
+    $prev_page = $uri . "?page=" . ($page_number-1);
+    $next_page = $uri . "?page=" . ($page_number+1);
+
+    if($page_number > 1)
+      echo ("<a class='btn btn-sm px-2 btn-default' href='" . $prev_page . "'><b> << </b></a>");
+    else
+      echo ("<a class='btn btn-sm px-2 btn-default disabled'><b> << </b></a>");
+
+    if(($page_number * $limit) <= count($arr))
+      echo ("<a class='btn btn-sm px-2 btn-default' href='" . $next_page . "'><b> >> </b></a>");
+    else
+      echo ("<a class='btn btn-sm px-2 btn-default disabled'><b> >> </b></a>");
+  }
 ?>

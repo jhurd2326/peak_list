@@ -4,8 +4,40 @@
 
   session_start();
 
-  $mountains = search_mountains(array($_POST["name"], $_POST["state"], $_POST["country"],
-    $_POST["latitude"], $_POST["longitude"], $_POST["max_elevation"], $_POST["min_elevation"]), $dbh);
+  if(!isset($_SESSION["mountain_name"]))
+    $_SESSION["mountain_name"] = $_POST["name"];
+
+  if(!isset($_SESSION["mountain_state"]))
+    $_SESSION["mountain_state"] = $_POST["state"];
+
+  if(!isset($_SESSION["mountain_country"]))
+    $_SESSION["mountain_country"] = $_POST["country"];
+
+  if(!isset($_SESSION["mountain_latitude"]))
+    $_SESSION["mountain_latitude"] = $_POST["latitude"];
+
+  if(!isset($_SESSION["mountain_longitude"]))
+    $_SESSION["mountain_longitude"] = $_POST["longitude"];
+
+  if(!isset($_SESSION["mountain_max_elevation"]))
+    $_SESSION["mountain_max_elevation"] = $_POST["max_elevation"];
+
+  if(!isset($_SESSION["mountain_min_elevation"]))
+    $_SESSION["mountain_min_elevation"] = $_POST["min_elevation"];
+
+  $mountains = search_mountains(array($_SESSION["mountain_name"], $_SESSION["mountain_state"],
+    $_SESSION["mountain_country"], $_SESSION["mountain_latitude"], $_SESSION["mountain_longitude"],
+    $_SESSION["mountain_max_elevation"], $_SESSION["mountain_min_elevation"]), $dbh);
+
+  $page_number = 0;
+  $limit = 10;
+
+  if(isset($_GET["page"]))
+    $page_number = $_GET["page"];
+  else
+    header("Location: results.php?page=1");
+
+  $curr_mountains = array_slice($mountains, $limit * ($page_number-1), $limit);
 ?>
 
 <!DOCTYPE html>
@@ -26,19 +58,20 @@
         ?>
         <div class="row flex-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card animated fadeIn">
+            <div class="card">
               <div class="card-header default-color text-center">
                 <h2 class="h2-responsive" style="color: white;">Results</h2>
               </div>
               <div class="card-body">
                 <a href="search.php" style="color: #2BBBAD"> << Return to Search</a>
                 <br />
-                <?php if(empty($mountains)): ?>
+                <?php if(empty($curr_mountains) || empty($mountains)): ?>
                   <h2 class="text-center">No Mountains Found</h1>
                 <?php else: ?>
                   <br />
+
                   <ul class = "search-list">
-                    <?php foreach($mountains as $mountain) { ?>
+                    <?php foreach($curr_mountains as $mountain) { ?>
                       <a href="#">
                         <div class="row list-item u-hover--grey mx-4">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -54,6 +87,9 @@
                       </a>
                     <?php } ?>
                   </ul>
+                  <div class="text-center">
+                    <?php displayPagination($mountains, $page_number, $limit); ?>
+                  </div>
                 <?php endif; ?>
               </div>
             </div>
