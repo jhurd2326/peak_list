@@ -3,6 +3,8 @@
   include_once "../php/functions.php";
 
   session_start();
+
+  unset($_SESSION["mountains"]);
 ?>
 
 <!DOCTYPE html>
