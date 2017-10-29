@@ -38,6 +38,20 @@ html, body, .background{
   overflow-y: scroll;
 }
 
+.custom-dropdown {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: solid 1px #AAAAAA;
+}
+
+.custom-dropdown:active {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: solid 2px #4285F4;
+}
+
 @media only screen and (min-width : 320px) and (max-width : 414px){
    .card-body {
      height: 80vh;

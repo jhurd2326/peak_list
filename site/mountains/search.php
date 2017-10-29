@@ -1,6 +1,7 @@
 <?php
   include_once "../php/db_connect.php";
   include_once "../php/functions.php";
+  include_once "../php/constants.php";
 
   session_start();
 
@@ -43,15 +44,28 @@
 
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                      <div class="md-form">
-                        <input type="text" name="country" id="country" class="form-control" />
-                        <label for="country">Country</label>
+                      <div class="form-group">
+                        <label for="country" style="color: #757575;">Country:</label>
+                        <select class="form-control custom-dropdown" name="country" id="country">
+                          <option value=""> -- </option>
+                          <?php foreach ($countries as $country) {?>
+                            <option><?php echo $country; }?></option>
+                        </select>
                       </div>
                     </div>
+
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                      <div class="md-form">
-                        <input type="text" name="state" id="state" class="form-control" />
-                        <label for="state">State</label>
+                      <div class="form-group">
+                        <label for="state" style="color: #757575;">State:</label>
+                        <select class="form-control custom-dropdown" name="state" id="state">
+                          <option value=""> -- </option>
+                          <?php foreach ($us_states as $state) {?>
+                            <option><?php echo $state; }?></option>
+                          <?php foreach ($canadian_states as $state) {?>
+                            <option><?php echo $state; }?></option>
+                          <?php foreach ($mexican_states as $state) {?>
+                            <option><?php echo $state; }?></option>
+                        </select>
                       </div>
                     </div>
                   </div>
