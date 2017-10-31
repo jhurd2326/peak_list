@@ -34,7 +34,7 @@ html, body, .background{
 }
 
 .search-list {
-  height: 70vh;
+  height: 60vh;
   overflow-y: scroll;
 }
 
@@ -50,6 +50,27 @@ html, body, .background{
   border-right: none;
   border-left: none;
   border-bottom: solid 2px #4285F4;
+}
+
+.google_map {
+  width: 100%;
+  height: 40vh;
+}
+
+.card-section-title {
+  border-bottom: solid 1px #E0E0E0;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.mountain-details {
+  height: 80vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 414px){

@@ -53,7 +53,7 @@
 
                   <ul class = "search-list">
                     <?php foreach($curr_mountains as $mountain) { ?>
-                      <a href="#">
+                      <a href=<?php echo ("show.php?id=" . $mountain["id"]); ?>>
                         <div class="row list-item u-hover--grey mx-4">
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <?php echo $mountain["name"]; ?>
@@ -69,7 +69,7 @@
                     <?php } ?>
                   </ul>
                   <div class="text-center">
-                    <?php displayPagination($_SESSION["mountains"], $page_number, $limit); ?>
+                    <?php display_pagination($_SESSION["mountains"], $page_number, $limit); ?>
                   </div>
                 <?php endif; ?>
               </div>

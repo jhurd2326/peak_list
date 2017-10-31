@@ -1,5 +1,5 @@
 <?php
-  $countries = array("Canada", "Mexico", "Russia", "United States of America");
+  $countries = array("Canada", "Mexico", "United States of America");
 
   $us_states = array( "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado",
                       "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho",
@@ -18,6 +18,4 @@
 
   $mexican_states = array("Tlaxcala", "Jalisco", "Nuevo León", "Puebla", "Baja California",
                           "Mexico City", "Veracruz", "Mexico", "Michoacán");
-
-  $russian_states = array("Chukotka Autonomous Okrug");
 ?>

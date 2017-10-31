@@ -154,8 +154,27 @@
     else { return array(); }
   }
 
+  /*** Find mountain based on id ***/
+  function find_mountain($id, $dbh)
+  {
+    $sql = "SELECT * FROM mountains where id = :id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $id);
+      if($query -> execute())
+      {
+        if ($query -> rowCount() == 1)
+          return $query -> fetch();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
   /*** Display the pagination links for the given array, page number, and limit ***/
-  function displayPagination($arr, $page_number, $limit)
+  function display_pagination($arr, $page_number, $limit)
   {
     $total_count = count($arr);
     $total_pages = ceil($total_count / $limit);
@@ -208,5 +227,19 @@
       echo ("<a class='btn btn-sm px-2 btn-default' href='" . $next_page . "'><b> >> </b></a>");
     else
       echo ("<a class='btn btn-sm px-2 btn-default disabled'><b> >> </b></a>");
+  }
+
+
+  /*** Display a Google Map showing the given coordinates using Google Maps API ***/
+  function display_google_map($latitude, $longitude)
+  {
+    if($key = file_get_contents("../api_keys/google_maps_key.txt"))
+    {
+      echo ("<iframe class='google_map' frameborder='0' style='border:0' ");
+      echo ("src='https://www.google.com/maps/embed/v1/place?key=" . $key);
+      echo ("&zoom=12&q=" . $latitude . "," . $longitude . "' allowfullscreen> ");
+      echo ("</iframe>");
+    }
+    else { echo "Google API Key Not Found"; }
   }
 ?>
