@@ -2,8 +2,6 @@
   include_once "../php/db_connect.php";
   include_once "../php/functions.php";
 
-  session_start();
-
   if(isset($_GET["id"]))
     $mountain = find_mountain($_GET["id"], $dbh);
   else
@@ -110,7 +108,7 @@
                                   <form action=<?php echo ("/php/new_comment.php?mountain=" . $mountain["id"]); ?> method="post" name="commment_form">
                                     <div class="modal-body mx-3">
                                       <div class="md-form">
-                                        <i class="fa fa-pencil prefix"></i>
+                                        <i class="fa fa-comments-o prefix"></i>
                                         <textarea type="text" name="comment_body" id="comment_body" class="md-textarea"></textarea>
                                         <label for="comment-body">Comment</label>
                                       </div>

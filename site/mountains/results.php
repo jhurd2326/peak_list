@@ -2,8 +2,6 @@
   include_once "../php/db_connect.php";
   include_once "../php/functions.php";
 
-  session_start();
-
   if(!isset($_SESSION["mountains"]))
   {
     $_SESSION["mountains"] = search_mountains(array($_POST["name"], $_POST["state"], $_POST["country"],

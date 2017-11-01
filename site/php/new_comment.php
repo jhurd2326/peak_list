@@ -2,8 +2,6 @@
   include_once "db_connect.php";
   include_once "functions.php";
 
-  session_start();
-
   if(isset($_POST["comment_body"], $_GET["mountain"]) && check_login($dbh))
   {
     $content = htmlspecialchars($_POST["comment_body"]);

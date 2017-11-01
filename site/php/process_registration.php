@@ -2,8 +2,6 @@
   include_once "db_connect.php";
   include_once "functions.php";
 
-  session_start();
-
   if(isset($_POST["username"], $_POST["p"], $_POST["email"], $_POST["first_name"],
     $_POST["last_name"], $_POST["age"], $_POST["phone"], $_POST["address"]))
   {

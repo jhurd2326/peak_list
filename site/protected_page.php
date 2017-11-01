@@ -1,8 +1,6 @@
 <?php
 include_once 'php/db_connect.php';
 include_once 'php/functions.php';
-
-session_start();
 ?>
 <!DOCTYPE html>
 <html>
