@@ -25,6 +25,13 @@ html, body, .background{
   background-color: #F0F0F0 !important;
 }
 
+.custom-link {
+  color: #2BBBAD;
+}
+.custom-link:hover {
+  color: #00695c;
+}
+
 .list-item {
   color: black !important;
   padding-top: 15px;

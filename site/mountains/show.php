@@ -8,6 +8,8 @@
     $mountain = find_mountain($_GET["id"], $dbh);
   else
     $mountain = array();
+
+  $comments = find_mountain_comments($mountain["id"], $dbh);
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +18,7 @@
     <title><?php echo $mountain["name"]; ?></title>
 
     <link rel="stylesheet" href="../stylesheets/custom.css" />
+    <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
   </head>
   <body>
     <div class="background">
@@ -91,12 +94,54 @@
 
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="card-section-title">
-                          <h2>Comments</h2>
+                        <div class="d-flex card-section-title">
+                          <h2>Comments <?php echo (" (" . count($comments) . ")"); ?></h2>
+
+                          <?php if(check_login($dbh)): ?>
+                            <div class="modal fade" id="modalCommentForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-bold">New Comment</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <form action=<?php echo ("/php/new_comment.php?mountain=" . $mountain["id"]); ?> method="post" name="commment_form">
+                                    <div class="modal-body mx-3">
+                                      <div class="md-form">
+                                        <i class="fa fa-pencil prefix"></i>
+                                        <textarea type="text" name="comment_body" id="comment_body" class="md-textarea"></textarea>
+                                        <label for="comment-body">Comment</label>
+                                      </div>
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-center">
+                                      <input type="button" value="Create" class="btn btn-default" onclick="this.form.submit();" />
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                            <a class="mx-4 pt-2" href="" data-toggle="modal" data-target="#modalCommentForm">
+                              <h3><i class="fa fa-pencil-square-o custom-link" aria-hidden="true"></i></h3>
+                            </a>
+                          <?php endif; ?>
                         </div>
+
+                        <?php foreach($comments as $comment) { ?>
+                          <div class="row px-4">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-2">
+                              <b><?php echo ($comment["username"]); ?></b>
+                              <small><?php echo (" " . time_elapsed_string($comment["created_at"])); ?></small>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-4">
+                              <p><?php echo ($comment["content"]); ?></p>
+                            </div>
+                          </div>
+                        <?php } ?>
+
                       </div>
                     </div>
-
                   </div>
                 <?php endif; ?>
               </div>

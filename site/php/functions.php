@@ -157,7 +157,7 @@
   /*** Find mountain based on id ***/
   function find_mountain($id, $dbh)
   {
-    $sql = "SELECT * FROM mountains where id = :id";
+    $sql = "SELECT * FROM mountains where id = :id LIMIT 1";
     if($query = $dbh -> prepare($sql))
     {
       $query -> bindValue(":id", $id);
@@ -165,6 +165,44 @@
       {
         if ($query -> rowCount() == 1)
           return $query -> fetch();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
+  /*** Find user based on id ***/
+  function find_user($id, $dbh)
+  {
+    $sql = "SELECT * FROM users where id = :id LIMIT 1";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() == 1)
+          return $query -> fetch();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
+  /*** Get an array of all of the comments linked to a mountain ***/
+  function find_mountain_comments($id, $dbh)
+  {
+    $sql = "SELECT * FROM comments INNER JOIN users ON comments.user_id = users.id WHERE mountain_id = :id ORDER BY created_at DESC";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
         else
           return array();
       }
@@ -241,5 +279,29 @@
       echo ("</iframe>");
     }
     else { echo "Google API Key Not Found"; }
+  }
+
+  /*** Returns a string of elapsed time in 'time ago ' format ***/
+  function time_elapsed_string($datetime, $full = false)
+  {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array('y' => 'year', 'm' => 'month', 'w' => 'week', 'd' => 'day',
+                    'h' => 'hour', 'i' => 'minute', 's' => 'second');
+
+    foreach ($string as $k => &$v) {
+      if ($diff->$k)
+        $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+      else
+        unset($string[$k]);
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
   }
 ?>
