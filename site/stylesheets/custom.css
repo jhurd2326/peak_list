@@ -76,6 +76,19 @@ html, body, .background{
   overflow-x: hidden;
 }
 
+.mountain-stats {
+  background-color: #2BBBAD;
+  padding-top: 8px;
+  width: 42px;
+  height: 42px;
+  margin-right: 32px;
+  border-radius: 50%;
+}
+
+.mountain-stats:hover {
+  background-color: #00695c;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }

@@ -39,15 +39,40 @@
                   <?php endif; ?>
                 </h2>
               </div>
-              <div class="mountain-details">
+              <div class="mountain-details" style="position: relative;">
                 <?php if(empty($mountain)): ?>
                   <div class="card-body">
                     <h2 class="text-center">No Mountain Found</h2>
                   </div>
                 <?php else: ?>
                   <?php display_google_map($mountain["latitude"], $mountain["longitude"]); ?>
-                  <div class="card-body">
 
+                  <div class="d-flex justify-content-end mt-3 py-0">
+                    <div class="text-center mx-2">
+                      <div class="mx-2 mountain-stats">
+                        <h4 class="my-0 text-center"><i class=" fa fa-user text-white" aria-hidden="true"></i></h4>
+                      </div>
+                      <span class=><small>(23)</small></span>
+                    </div>
+                    <div class="text-center mx-2">
+                      <div class="mx-2 mountain-stats">
+                        <a href=<?php echo("like_mountain.php?id=" . $mountain["id"]); ?>>
+                          <h4 class="my-0 text-center"><i class="fa fa-thumbs-o-up text-white" aria-hidden="true"></i></h4>
+                        </a>
+                      </div>
+                      <span class=><small>(<?php echo find_mountain_likes($mountain["id"], $dbh); ?>)</small></span>
+                    </div>
+                    <div class="text-center mx-2">
+                      <div class="mx-2 mountain-stats">
+                        <a href=<?php echo("dislike_mountain.php?id=" . $mountain["id"]); ?>>
+                          <h4 class="my-0 text-center"><i class="fa fa-thumbs-o-down text-white" aria-hidden="true"></i></h4>
+                        </a>
+                      </div>
+                      <span class=><small>(<?php echo find_mountain_dislikes($mountain["id"], $dbh); ?>)</small></span>
+                    </div>
+                  </div>
+
+                  <div class="card-body">
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card-section-title">

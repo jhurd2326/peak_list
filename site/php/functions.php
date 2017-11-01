@@ -173,6 +173,42 @@
     else { return array(); }
   }
 
+  /*** Return the number of likes that a mountain has ***/
+  function find_mountain_likes($id, $dbh)
+  {
+    $sql = "SELECT COUNT(*) FROM mountain_ratings WHERE mountain_id = :id AND rating > 0";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $id);
+      if($query -> execute())
+      {
+        $result = $query -> fetch();
+        return $result[0];
+      }
+      else
+        return 0;
+    }
+    else { return 0; }
+  }
+
+  /*** Return the number of dislikes that a mountain has ***/
+  function find_mountain_dislikes($id, $dbh)
+  {
+    $sql = "SELECT COUNT(*) FROM mountain_ratings WHERE mountain_id = :id AND rating < 0";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $id);
+      if($query -> execute())
+      {
+        $result = $query -> fetch();
+        return $result[0];
+      }
+      else
+        return 0;
+    }
+    else { return 0; }
+  }
+
   /*** Find user based on id ***/
   function find_user($id, $dbh)
   {
@@ -209,6 +245,42 @@
       else { return array(); }
     }
     else { return array(); }
+  }
+
+  /*** Returns an array of all the comments left by a user for a specified mountain ***/
+  function find_user_mountain_ratings($mountain_id, $user_id, $dbh)
+  {
+    $sql = "SELECT * FROM mountain_ratings WHERE mountain_id = :mountain_id AND user_id = :user_id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":mountain_id", $mountain_id);
+      $query -> bindValue(":user_id", $user_id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
+  /*** Deletes a users rating of a given mountain ***/
+  function delete_user_mountain_ratings($mountain_id, $user_id, $dbh)
+  {
+    $sql = "DELETE FROM mountain_ratings WHERE mountain_id = :mountain_id AND user_id = :user_id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":mountain_id", $mountain_id);
+      $query -> bindValue(":user_id", $user_id);
+      if($query -> execute())
+        return true;
+      else
+        return false;
+    }
+    else { return false; }
   }
 
   /*** Display the pagination links for the given array, page number, and limit ***/
