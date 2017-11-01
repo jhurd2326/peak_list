@@ -19,7 +19,7 @@
               <div class="card-header default-color text-center">
                 <h2 class="h2-responsive" style="color: white;">Register</h2>
               </div>
-              <div class="card-body">
+              <div class="card-body-register card-body">
                 <form action="php/process_registration.php" method="post" name="registration_form">
                   <div class="md-form">
                     <input type="text" name="email" id="email" />

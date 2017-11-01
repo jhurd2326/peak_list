@@ -84,6 +84,7 @@ html, body, .background{
   overflow-x: hidden;
 }
 
+<<<<<<< HEAD
 .mountain-stats {
   background-color: #2BBBAD;
   padding-top: 8px;
@@ -107,8 +108,23 @@ html, body, .background{
 }
 
 ::-webkit-scrollbar {
+=======
+/*::-webkit-scrollbar {
+>>>>>>> style card-body-register
   display: none;
+}*/
+
+.card-body-register{
+  height:80vh;
+  overflow-y: scroll;
+  -webkit-scrollbar: block !important;
 }
+
+/*.card-body-register::-webkit-scrollbar{
+  display: block !important;
+}*/
+
+
 
 @media only screen and (min-width : 320px) and (max-width : 414px){
    .card-body {
