@@ -176,25 +176,7 @@
   /*** Return the number of likes that a mountain has ***/
   function find_mountain_likes($id, $dbh)
   {
-    $sql = "SELECT COUNT(*) FROM mountain_ratings WHERE mountain_id = :id AND rating > 0";
-    if($query = $dbh -> prepare($sql))
-    {
-      $query -> bindValue(":id", $id);
-      if($query -> execute())
-      {
-        $result = $query -> fetch();
-        return $result[0];
-      }
-      else
-        return 0;
-    }
-    else { return 0; }
-  }
-
-  /*** Return the number of dislikes that a mountain has ***/
-  function find_mountain_dislikes($id, $dbh)
-  {
-    $sql = "SELECT COUNT(*) FROM mountain_ratings WHERE mountain_id = :id AND rating < 0";
+    $sql = "SELECT COUNT(*) FROM mountain_ratings WHERE mountain_id = :id";
     if($query = $dbh -> prepare($sql))
     {
       $query -> bindValue(":id", $id);
@@ -248,7 +230,7 @@
   }
 
   /*** Returns an array of all the comments left by a user for a specified mountain ***/
-  function find_user_mountain_ratings($mountain_id, $user_id, $dbh)
+  function user_mountain_rating($mountain_id, $user_id, $dbh)
   {
     $sql = "SELECT * FROM mountain_ratings WHERE mountain_id = :mountain_id AND user_id = :user_id";
     if($query = $dbh -> prepare($sql))
@@ -258,27 +240,11 @@
       if($query -> execute())
       {
         if($query -> rowCount() > 0)
-          return $query -> fetchAll();
+          return true;
         else
-          return array();
+          return false;
       }
-      else { return array(); }
-    }
-    else { return array(); }
-  }
-
-  /*** Deletes a users rating of a given mountain ***/
-  function delete_user_mountain_ratings($mountain_id, $user_id, $dbh)
-  {
-    $sql = "DELETE FROM mountain_ratings WHERE mountain_id = :mountain_id AND user_id = :user_id";
-    if($query = $dbh -> prepare($sql))
-    {
-      $query -> bindValue(":mountain_id", $mountain_id);
-      $query -> bindValue(":user_id", $user_id);
-      if($query -> execute())
-        return true;
-      else
-        return false;
+      else { return false; }
     }
     else { return false; }
   }

@@ -62,14 +62,6 @@
                       </div>
                       <span class=><small>(<?php echo find_mountain_likes($mountain["id"], $dbh); ?>)</small></span>
                     </div>
-                    <div class="text-center mx-2">
-                      <div class="mx-2 mountain-stats">
-                        <a href=<?php echo("dislike_mountain.php?id=" . $mountain["id"]); ?>>
-                          <h4 class="my-0 text-center"><i class="fa fa-thumbs-o-down text-white" aria-hidden="true"></i></h4>
-                        </a>
-                      </div>
-                      <span class=><small>(<?php echo find_mountain_dislikes($mountain["id"], $dbh); ?>)</small></span>
-                    </div>
                   </div>
 
                   <div class="card-body">
