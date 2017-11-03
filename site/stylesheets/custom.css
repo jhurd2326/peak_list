@@ -41,6 +41,7 @@ html, body, .background{
 }
 
 .search-list {
+  word-wrap: break-word;
   height: 60vh;
   overflow-y: scroll;
 }

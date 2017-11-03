@@ -143,6 +143,13 @@
                           <?php endif; ?>
                         </div>
 
+                        <?php if(count($comments) > 5): ?>
+                          <?php $comments = array_slice($comments, 0, 5); ?>
+                          <div class="d-flex justify-content-end">
+                            <a class="custom-link my-2" href=<?php echo("comments.php?page=1&mountain=" . $mountain["id"]); ?>> View All >> </a>
+                          </div>
+                        <?php endif; ?>
+
                         <?php foreach($comments as $comment) { ?>
                           <div class="row px-4">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-2">

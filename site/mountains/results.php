@@ -45,7 +45,7 @@
                 <a href="search.php" style="color: #2BBBAD"> << Return to Search</a>
                 <br />
                 <?php if(empty($curr_mountains)): ?>
-                  <h2 class="text-center">No Mountains Found</h1>
+                  <h2 class="text-center">No Mountains Found</h2>
                 <?php else: ?>
                   <br />
 
