@@ -70,7 +70,7 @@
     $age, $phone, $address, $dbh)
   {
     $error_msg = "";
-    $sql = "SELECT id FROM users where username = :username LIMIT 1";
+    $sql = "SELECT id FROM users WHERE username = :username LIMIT 1";
     if($query = $dbh -> prepare($sql))
     {
       $query -> bindValue(":username", $username);
@@ -115,7 +115,7 @@
   /*** Search the database of mountains given search parameters ***/
   function search_mountains($params, $dbh)
   {
-    $sql = "SELECT * FROM mountains where";
+    $sql = "SELECT * FROM mountains WHERE";
 
     $attributes = array(":name", ":state", ":country", ":latitude", ":longitude",
                         ":max_elevation", "min_elevation");
@@ -157,7 +157,7 @@
   /*** Find mountain based on id ***/
   function find_mountain($id, $dbh)
   {
-    $sql = "SELECT * FROM mountains where id = :id LIMIT 1";
+    $sql = "SELECT * FROM mountains WHERE id = :id LIMIT 1";
     if($query = $dbh -> prepare($sql))
     {
       $query -> bindValue(":id", $id);
