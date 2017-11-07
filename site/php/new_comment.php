@@ -9,15 +9,14 @@
     $user_id = $_SESSION["user_id"];
     $curr_time = date("Y-m-d H:i:s", time());
 
-    $sql = "INSERT INTO comments (content, created_at, updated_at, mountain_id, user_id) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO comments (content, created_at, mountain_id, user_id) VALUES (?, ?, ?, ?)";
 
     if($query = $dbh -> prepare($sql))
     {
       $query -> bindValue(1, $content);
       $query -> bindValue(2, $curr_time);
-      $query -> bindValue(3, $curr_time);
-      $query -> bindValue(4, $mountain_id);
-      $query -> bindValue(5, $user_id);
+      $query -> bindValue(3, $mountain_id);
+      $query -> bindValue(4, $user_id);
       $query -> execute();
     }
     header("Location: ../mountains/show.php?id=" . $mountain_id);
