@@ -49,11 +49,26 @@
                   <ul class="search-list">
                     <?php foreach($curr_likes as $like) { ?>
                       <div class="list-item text-left">
-                        <span>
-                          <i class="mx-2 fa fa-user-circle-o" aria-hidden="true" style="font-size: 150%"></i>
-                          <b><?php echo ($like["username"]); ?></b>
-                          <small><?php echo (" liked it " . time_elapsed_string($like["created_at"])); ?></small>
-                        </span>
+                        <div class="d-flex row mx-0">
+                          <div class="d-flex col-12 justify-content-between">
+                            <span>
+                              <i class="mx-2 fa fa-user-circle-o" aria-hidden="true" style="font-size: 150%"></i>
+                              <b><?php echo ($like["username"]); ?></b>
+                              <small><?php echo (" liked it " . time_elapsed_string($like["created_at"])); ?></small>
+                            </span>
+                            <?php if(check_login($dbh) && $_SESSION["user_id"] != $like["id"]): ?>
+                              <?php if(user_following($_SESSION["user_id"], $like["id"], $dbh)): ?>
+                                <div>
+                                  <button class="btn-sm btn-outline-default mx-0"><b>Following</b></button>
+                                </div>
+                              <?php else: ?>
+                                <div>
+                                  <a href=<?php echo("/users/follow.php?user=" . $like["id"]); ?> class="btn btn-sm btn-default mx-0"><b>Follow</b></a>
+                                </div>
+                              <?php endif; ?>
+                            <?php endif; ?>
+                          </div>
+                        </div>
                       </div>
                     <?php } ?>
                   </ul>

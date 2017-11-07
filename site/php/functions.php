@@ -325,6 +325,26 @@
     else { return false; }
   }
 
+  /*** Returns whether the logged in user follows the specified user ***/
+  function user_following($signed_in_id, $user_id, $dbh)
+  {
+    $sql = "SELECT * FROM relationships WHERE follower_id = :follower_id AND followed_id = :followed_id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":follower_id", $signed_in_id);
+      $query -> bindValue(":followed_id", $user_id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return true;
+        else
+          return false;
+      }
+      else { return false; }
+    }
+    else { return false; }
+  }
+
   /*** Display the pagination links for the given array, page number, and limit ***/
   function display_pagination($arr, $page_number, $limit)
   {
