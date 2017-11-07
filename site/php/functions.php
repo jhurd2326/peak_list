@@ -174,7 +174,7 @@
   }
 
   /*** Return the number of likes that a mountain has ***/
-  function find_mountain_likes($id, $dbh)
+  function find_mountain_likes_count($id, $dbh)
   {
     $sql = "SELECT COUNT(*) FROM mountain_ratings WHERE mountain_id = :id";
     if($query = $dbh -> prepare($sql))
@@ -229,10 +229,48 @@
     else { return array(); }
   }
 
-  /*** Returns an array of all the comments left by a user for a specified mountain ***/
+  /*** Returns if a user has liked the mountain or not ***/
   function user_mountain_rating($mountain_id, $user_id, $dbh)
   {
     $sql = "SELECT * FROM mountain_ratings WHERE mountain_id = :mountain_id AND user_id = :user_id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":mountain_id", $mountain_id);
+      $query -> bindValue(":user_id", $user_id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return true;
+        else
+          return false;
+      }
+      else { return false; }
+    }
+    else { return false; }
+  }
+
+  /*** Returns an array of all the users who marked the given mountain as climbed ***/
+  function find_mountain_users_count($mountain_id, $dbh)
+  {
+    $sql = "SELECT COUNT(*) FROM mountain_users WHERE mountain_id = :mountain_id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":mountain_id", $mountain_id);
+      if($query -> execute())
+      {
+        $result = $query -> fetch();
+        return $result[0];
+      }
+      else
+        return 0;
+    }
+    else { return 0; }
+  }
+
+  /*** Returns if the mountain has been marked as climbed by the user ***/
+  function mountain_user($mountain_id, $user_id, $dbh)
+  {
+    $sql = "SELECT * FROM mountain_users WHERE mountain_id = :mountain_id AND user_id = :user_id";
     if($query = $dbh -> prepare($sql))
     {
       $query -> bindValue(":mountain_id", $mountain_id);

@@ -47,23 +47,55 @@
                 <?php else: ?>
                   <?php display_google_map($mountain["latitude"], $mountain["longitude"]); ?>
 
+                  <!--  Buttons for liking and marking as climbed  -->
                   <div class="d-flex justify-content-end mt-3 py-0">
                     <div class="text-center mx-2">
-                      <div class="mx-2 mountain-stats">
-                        <h4 class="my-0 text-center"><i class=" fa fa-user text-white" aria-hidden="true"></i></h4>
-                      </div>
-                      <span class=><small>(23)</small></span>
+                      <?php if(!check_login($dbh) || mountain_user($_GET["id"], $_SESSION["user_id"], $dbh)): ?>
+                        <div class="mx-2 mountain-stats-disabled">
+                          <h4 class="my-0 text-center"><i class=" fa fa-check text-white" aria-hidden="true"></i></h4>
+                        </div>
+                      <?php else: ?>
+                        <div class="mx-2 mountain-stats">
+                          <a href=<?php echo("climb_mountain.php?id=" . $mountain["id"]); ?>>
+                            <h4 class="my-0 text-center"><i class=" fa fa-check text-white" aria-hidden="true"></i></h4>
+                          </a>
+                        </div>
+                      <?php endif; ?>
+                      <span><small>
+                        <?php
+                          $climbers = find_mountain_users_count($mountain["id"], $dbh);
+                          echo $climbers;
+                          if($climbers == 1): echo " climber";
+                          else: echo " climbers";
+                          endif;
+                        ?>
+                      </small></span>
                     </div>
                     <div class="text-center mx-2">
-                      <div class="mx-2 mountain-stats">
-                        <a href=<?php echo("like_mountain.php?id=" . $mountain["id"]); ?>>
+                      <?php if(!check_login($dbh) || user_mountain_rating($_GET["id"], $_SESSION["user_id"], $dbh)): ?>
+                        <div class="mx-2 mountain-stats-disabled">
                           <h4 class="my-0 text-center"><i class="fa fa-thumbs-o-up text-white" aria-hidden="true"></i></h4>
-                        </a>
-                      </div>
-                      <span class=><small>(<?php echo find_mountain_likes($mountain["id"], $dbh); ?>)</small></span>
+                        </div>
+                      <?php else: ?>
+                        <div class="mx-2 mountain-stats">
+                          <a href=<?php echo("like_mountain.php?id=" . $mountain["id"]); ?>>
+                            <h4 class="my-0 text-center"><i class="fa fa-thumbs-o-up text-white" aria-hidden="true"></i></h4>
+                          </a>
+                        </div>
+                      <?php endif; ?>
+                      <span><small>
+                        <?php
+                          $likes = find_mountain_likes_count($mountain["id"], $dbh);
+                          echo $likes;
+                          if($likes == 1): echo " like";
+                          else: echo " likes";
+                          endif;
+                        ?>
+                      </small></span>
                     </div>
                   </div>
 
+                  <!--  Mountain Information  -->
                   <div class="card-body">
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -107,11 +139,13 @@
                       </div>
                     </div>
 
+                    <!--  Comments  -->
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="d-flex card-section-title">
                           <h2>Comments <?php echo (" (" . count($comments) . ")"); ?></h2>
 
+                          <!--  Comments Modal  -->
                           <?php if(check_login($dbh)): ?>
                             <div class="modal fade" id="modalCommentForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                               <div class="modal-dialog" role="document">
@@ -143,6 +177,7 @@
                           <?php endif; ?>
                         </div>
 
+                        <!--  Link to view all comments if there are more than 5 comments  -->
                         <?php if(count($comments) > 5): ?>
                           <?php $comments = array_slice($comments, 0, 5); ?>
                           <div class="d-flex justify-content-end">
@@ -150,6 +185,7 @@
                           </div>
                         <?php endif; ?>
 
+                        <!--  List the most recent comments  -->
                         <?php foreach($comments as $comment) { ?>
                           <div class="row px-4">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-2">
