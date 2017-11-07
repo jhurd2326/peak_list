@@ -61,15 +61,17 @@
                           </a>
                         </div>
                       <?php endif; ?>
-                      <span><small>
-                        <?php
-                          $climbers = find_mountain_users_count($mountain["id"], $dbh);
-                          echo $climbers;
-                          if($climbers == 1): echo " climber";
-                          else: echo " climbers";
-                          endif;
-                        ?>
-                      </small></span>
+                      <a class="custom-link" href=<?php echo("climbers.php?page=1&mountain=" . $mountain["id"]); ?>>
+                        <span><small>
+                          <?php
+                            $climbers = find_mountain_users_count($mountain["id"], $dbh);
+                            echo $climbers;
+                            if($climbers == 1): echo " climber";
+                            else: echo " climbers";
+                            endif;
+                          ?>
+                        </small></span>
+                      </a>
                     </div>
                     <div class="text-center mx-2">
                       <?php if(!check_login($dbh) || user_mountain_rating($_GET["id"], $_SESSION["user_id"], $dbh)): ?>
@@ -83,15 +85,17 @@
                           </a>
                         </div>
                       <?php endif; ?>
-                      <span><small>
-                        <?php
-                          $likes = find_mountain_likes_count($mountain["id"], $dbh);
-                          echo $likes;
-                          if($likes == 1): echo " like";
-                          else: echo " likes";
-                          endif;
-                        ?>
-                      </small></span>
+                      <a class="custom-link" href=<?php echo("likes.php?page=1&mountain=" . $mountain["id"]); ?>>
+                        <span><small>
+                          <?php
+                            $likes = find_mountain_likes_count($mountain["id"], $dbh);
+                            echo $likes;
+                            if($likes == 1): echo " like";
+                            else: echo " likes";
+                            endif;
+                          ?>
+                        </small></span>
+                      </a>
                     </div>
                   </div>
 

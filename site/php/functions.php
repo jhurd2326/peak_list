@@ -249,7 +249,26 @@
     else { return false; }
   }
 
-  /*** Returns an array of all the users who marked the given mountain as climbed ***/
+  /*** Returns an array of mountain_ratings joined with users for a specific mountain ***/
+  function find_mountain_ratings($mountain_id, $dbh)
+  {
+    $sql = "SELECT id, username, created_at FROM mountain_ratings INNER JOIN users ON mountain_ratings.user_id = users.id WHERE mountain_id = :id ORDER BY created_at DESC";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $mountain_id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
+  /*** Returns the number of users who marked the given mountain as climbed ***/
   function find_mountain_users_count($mountain_id, $dbh)
   {
     $sql = "SELECT COUNT(*) FROM mountain_users WHERE mountain_id = :mountain_id";
@@ -265,6 +284,25 @@
         return 0;
     }
     else { return 0; }
+  }
+
+  /*** Returns an array of all the users who marked the mountain as climbed ***/
+  function find_mountain_users($mountain_id, $dbh)
+  {
+    $sql = "SELECT id, username, created_at FROM mountain_users INNER JOIN users ON mountain_users.user_id = users.id WHERE mountain_id = :id ORDER BY created_at DESC";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $mountain_id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
   }
 
   /*** Returns if the mountain has been marked as climbed by the user ***/
