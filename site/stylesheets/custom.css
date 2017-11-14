@@ -40,6 +40,13 @@ html, body, .background{
 
 }
 
+.custom-list-item {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: solid 1px #E0E0E0;
+
+}
+
 .search-list {
   word-wrap: break-word;
   height: 60vh;

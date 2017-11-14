@@ -154,6 +154,74 @@
     else { return array(); }
   }
 
+  /*** Return the mountains in order of most likes ***/
+  function find_top_rated_mountains($dbh)
+  {
+    $sql = "SELECT count(mountains.id), mountains.name, mountains.id FROM mountains
+            INNER JOIN mountain_ratings ON mountains.id = mountain_ratings.mountain_id
+            GROUP BY (mountains.id) ORDER BY count(mountains.id) DESC;";
+
+    if($query = $dbh -> prepare($sql))
+    {
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
+  /*** Returns the logged in user's feed ***/
+  function user_feed($user_id, $dbh)
+  {
+    $sql = "SELECT mountains.id AS mountain_id, mountains.name, mountain_users.created_at,
+            users.username, users.id AS user_id FROM relationships INNER JOIN mountain_users ON
+            relationships.followed_id = mountain_users.user_id INNER JOIN users ON
+            relationships.followed_id = users.id INNER JOIN mountains ON
+            mountain_users.mountain_id = mountains.id WHERE
+            follower_id = :user_id ORDER BY mountain_users.created_at DESC;";
+
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":user_id", $user_id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
+  /*** Return the mountains in order of most climbs ***/
+  function find_most_popular_mountains($dbh)
+  {
+    $sql = "SELECT count(mountains.id), mountains.name, mountains.id FROM mountains
+            INNER JOIN mountain_users ON mountains.id = mountain_users.mountain_id
+            GROUP BY (mountains.id) ORDER BY count(mountains.id) DESC;";
+
+    if($query = $dbh -> prepare($sql))
+    {
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
+
   /*** Find mountain based on id ***/
   function find_mountain($id, $dbh)
   {

@@ -9,7 +9,7 @@
 
     if(login($username, $password, $dbh) == true)
     {
-      header("Location: ../protected_page.php");
+      header("Location: ../dashboard.php");
     }
     else
     {
