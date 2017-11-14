@@ -99,7 +99,7 @@
                   </div>
 
                   <div class="text-center my-3">
-                    <input type="button" value="Search" onclick="this.form.submit();" class="btn btn-default"/>
+                    <input type="button" value="Search" onclick="this.form.submit();" class="btn light-blue lighten-1"/>
                   </div>
 
                 </form>

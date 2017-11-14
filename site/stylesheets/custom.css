@@ -26,10 +26,10 @@ html, body, .background{
 }
 
 .custom-link {
-  color: #2BBBAD;
+  color: #33b5e5;
 }
 .custom-link:hover {
-  color: #00695c;
+  color: #00d2ff;
 }
 
 .list-item {
@@ -124,7 +124,20 @@ html, body, .background{
   display: block !important;
 }*/
 
-
+.card-header{
+  background: blue; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, #48b0e8, #00d2ff); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #48b0e8, #00d2ff); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #48b0e8, #00d2ff); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #48b0e8, #00d2ff);
+}
+.gradient{
+    background: blue; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #48b0e8, #00d2ff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #48b0e8, #00d2ff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #48b0e8, #00d2ff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #48b0e8, #00d2ff);
+}
 
 @media only screen and (min-width : 320px) and (max-width : 414px){
    .card-body {
