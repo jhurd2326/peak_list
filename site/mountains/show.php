@@ -13,41 +13,104 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><?php echo $mountain["name"]; ?></title>
+
+    <link rel="icon" href="/myfavicon.ico"/>
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("../navigation.php", function(data){
+          $("#nav-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("../footer.html", function(data){
+          $("#foot-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <script>
+        document.onkeydown=function(evt){
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if(keyCode == 13)
+            {
+                document.comment_form.submit();
+            }
+        }
+    </script>
+
+    <title><?php echo $mountain["name"], " | RangeFinder"; ?></title>
 
     <link rel="stylesheet" href="../stylesheets/custom.css" />
     <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
   </head>
   <body>
+    <div id= "nav-placeholder"></div>
+
     <div class="background">
-      <div class="container h-100">
+      <div class="container p-5 h-100">
         <?php
           if(isset($_GET["error"]))
           {
             echo "<p class='error'>Error Searching For Mountains</p>";
           }
         ?>
-        <div class="row flex-center">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-              <div class="card-header default-color text-center">
-                <h2 class="h2-responsive" style="color: white;">
+        <div class="form-group">
+            &nbsp;
+        </div>
+        <div class="row">
+          <div class = "col-lg-6 col-md-12 mb-4">
+            <?php if(empty($mountain)): ?>
+                <h2 class="text-center">No Mountain Found</h2>
+            <?php else: ?>
+              <?php display_google_map($mountain["latitude"], $mountain["longitude"]); ?>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+                <h2 class="h2-responsive" style="color: Black;">
                   <?php if(empty($mountain)): ?>
                     Error
                   <?php else: ?>
                     <?php echo $mountain["name"]; ?>
                   <?php endif; ?>
                 </h2>
-              </div>
-              <div class="mountain-details" style="position: relative;">
-                <?php if(empty($mountain)): ?>
-                  <div class="card-body">
-                    <h2 class="text-center">No Mountain Found</h2>
-                  </div>
-                <?php else: ?>
-                  <?php display_google_map($mountain["latitude"], $mountain["longitude"]); ?>
 
-                  <!--  Buttons for liking and marking as climbed  -->
+              <div class="mountain-details" style="position: relative;">
+                  <!--  Mountain Information  -->
+
+                    <div class="row">
+                        <div class ="col">
+                          <p> <b>State/Province:</b> <?php echo $mountain["state"]; ?></p>
+                      </div>
+                    </div>
+                    <div class =" row">
+                        <div class = "col">
+                          <p><b> Country:</b> <?php echo $mountain["country"]; ?></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col">
+                        <p><b>Elevation:</b> <?php echo $mountain["elevation"]; ?> ft. </p>
+                      </div>
+                    </div>
+                    <div class ="row">
+
+                      <div class="col">
+                        <p><b>Lattitude:</b> <?php echo $mountain["latitude"]; ?></p>
+                      </div>
+                    </div>
+
+                    <div class ="row">
+
+                      <div class="col">
+                        <p><b>Longitude:</b> <?php echo $mountain["longitude"]; ?></p>
+                      </div>
+                    </div>
+
+                    <div class ="card-section-title">
+                    </div>
+
+                    <!-- Buttons -->
                   <div class="d-flex justify-content-end mt-3 py-0">
                     <div class="text-center mx-2">
                       <?php if(!check_login($dbh) || mountain_user($_GET["id"], $_SESSION["user_id"], $dbh)): ?>
@@ -97,120 +160,78 @@
                         </small></span>
                       </a>
                     </div>
-                  </div>
-
-                  <!--  Mountain Information  -->
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="card-section-title">
-                          <h2>Information</h2>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <b><h4 style="text-decoration:underline">Name</h4></b>
-                        <p><?php echo $mountain["name"]; ?></p>
-                      </div>
-
-                      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <b><h4 style="text-decoration:underline">State</h4></b>
-                        <p><?php echo $mountain["state"]; ?></p>
-                      </div>
-
-                      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <b><h4 style="text-decoration:underline">Country</h4></b>
-                        <p><?php echo $mountain["country"]; ?></p>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <b><h4 style="text-decoration:underline">Elevation</h4></b>
-                        <p><?php echo $mountain["elevation"]; ?> ft. </p>
-                      </div>
-
-                      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <b><h4 style="text-decoration:underline">Latitude</h4></b>
-                        <p><?php echo $mountain["latitude"]; ?></p>
-                      </div>
-
-                      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                        <b><h4 style="text-decoration:underline">Longitude</h4></b>
-                        <p><?php echo $mountain["longitude"]; ?></p>
-                      </div>
-                    </div>
-
-                    <!--  Comments  -->
-                    <div class="row">
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="d-flex card-section-title">
-                          <h2>Comments <?php echo (" (" . count($comments) . ")"); ?></h2>
-
-                          <!--  Comments Modal  -->
-                          <?php if(check_login($dbh)): ?>
-                            <div class="modal fade" id="modalCommentForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-bold">New Comment</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <form action=<?php echo ("/php/new_comment.php?mountain=" . $mountain["id"]); ?> method="post" name="commment_form">
-                                    <div class="modal-body mx-3">
-                                      <div class="md-form">
-                                        <i class="fa fa-comments-o prefix"></i>
-                                        <textarea type="text" name="comment_body" id="comment_body" class="md-textarea"></textarea>
-                                        <label for="comment-body">Comment</label>
-                                      </div>
-                                    </div>
-                                    <div class="modal-footer d-flex justify-content-center">
-                                      <input type="button" value="Create" class="btn btn-default" onclick="this.form.submit();" />
-                                    </div>
-                                  </form>
-                                </div>
-                              </div>
-                            </div>
-                            <a class="mx-4 pt-2" href="" data-toggle="modal" data-target="#modalCommentForm">
-                              <h3><i class="fa fa-pencil-square-o custom-link" aria-hidden="true"></i></h3>
-                            </a>
-                          <?php endif; ?>
-                        </div>
-
-                        <!--  Link to view all comments if there are more than 5 comments  -->
-                        <?php if(count($comments) > 5): ?>
-                          <?php $comments = array_slice($comments, 0, 5); ?>
-                          <div class="d-flex justify-content-end">
-                            <a class="custom-link my-2" href=<?php echo("comments.php?page=1&mountain=" . $mountain["id"]); ?>> View All >> </a>
-                          </div>
-                        <?php endif; ?>
-
-                        <!--  List the most recent comments  -->
-                        <?php foreach($comments as $comment) { ?>
-                          <div class="row px-4">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-2">
-                              <b><?php echo ($comment["username"]); ?></b>
-                              <small><?php echo (" " . time_elapsed_string($comment["created_at"])); ?></small>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-4">
-                              <p><?php echo ($comment["content"]); ?></p>
-                            </div>
-                          </div>
-                        <?php } ?>
-
-                      </div>
-                    </div>
-                  </div>
+                  </div> <!--Buttons -->
                 <?php endif; ?>
-              </div>
+              </div> <!-- Mountain Deatils -->
+          </div> <!-- End Col 2 -->
+        </div> <!-- End First Row -->
+      </div> <!-- End Container -->
+
+      <div class = "container-fluid unique-color px-5">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="d-flex card-section-title">
+              <h2 class="white-text">Comments</h2>
+
+              <!--  Comments Modal  -->
+              <?php if(check_login($dbh)): ?>
+                <div class="modal fade" id="modalCommentForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-bold">New Comment</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <form action=<?php echo ("/php/new_comment.php?mountain=" . $mountain["id"]); ?> method="post" name="commment_form">
+                        <div class="modal-body mx-3">
+                          <div class="md-form">
+                            <i class="fa fa-comments-o prefix"></i>
+                            <textarea type="text" name="comment_body" id="comment_body" class="md-textarea"></textarea>
+                            <label for="comment-body">Comment</label>
+                          </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center">
+                          <input type="button" value="Create" class="btn btn-primary" onclick="this.form.submit();" />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <a class="mx-4 pt-2" href="" data-toggle="modal" data-target="#modalCommentForm">
+                  <h3><i class="fa fa-pencil-square-o comments-button" aria-hidden="true"></i></h3>
+                </a>
+              <?php endif; ?>
             </div>
+
+            <!--  Link to view all comments if there are more than 5 comments  -->
+            <?php if(count($comments) > 5): ?>
+              <?php $comments = array_slice($comments, 0, 5); ?>
+              <div class="d-flex justify-content-end">
+                <a class="custom-link my-2 comments-button" href=<?php echo("comments.php?page=1&mountain=" . $mountain["id"]); ?>> View all  <?php echo (" " . count($comments) . " comments "); ?>>> </a>
+              </div>
+            <?php endif; ?>
+
+            <!--  List the most recent comments  -->
+            <?php foreach($comments as $comment) { ?>
+              <div class="row px-4 white-text">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-2">
+                  <b><?php echo ($comment["username"]); ?></b>
+                  <small><?php echo (" " . time_elapsed_string($comment["created_at"])); ?></small>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-4">
+                  <p><?php echo ($comment["content"]); ?></p>
+                </div>
+              </div>
+            <?php } ?>
+
           </div>
         </div>
       </div>
+
+      <div id= "foot-placeholder"></div>
+
     </div>
 
     <script type="text/JavaScript" src="../javascripts/jquery-3.2.1.min.js"></script>

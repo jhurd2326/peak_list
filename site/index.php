@@ -7,29 +7,51 @@
 <html>
   <head>
     <title>Login</title>
-
+    <link rel="icon" href="/myfavicon.ico"/>
     <link rel="stylesheet" href="stylesheets/custom.css" />
     <link rel="stylesheet" href="stylesheets/hover.css" />
 
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("navigation.php", function(data){
+          $("#nav-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("footer.html", function(data){
+          $("#foot-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <script>
+        document.onkeydown=function(evt){
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if(keyCode == 13)
+            {
+              login_check(login_form, login_form.username, login_form.password);
+            }
+        }
+    </script>
+
   </head>
   <body>
-    <div class="background">
+
+    <div id= "nav-placeholder"></div>
+    <div class="background animated fadeIn">
       <div class="container h-100">
-        <?php
-          if(isset($_GET["error"]))
-          {
-            echo "<p class='error'>Error Logging In</p>";
-          }
-        ?>
         <?php if(check_login($dbh) == false): ?>
           <div class="row flex-center">
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-              <div class="card animated fadeIn">
-                <div class="card-header text-center">
-                  <h2 class="h2-responsive" style="color: white;">Sign-In</h2>
-                </div>
-                <div class="card-body" style="background-color: white;">
-                  <form action="php/process_login.php" method="post" name="login_form">
+                <div class="animated fadeIn">
+                  <?php
+                    if(isset($_GET["error"]))
+                    {
+                      echo "<p class='error' style='color: red;'>There was an error logging you in.<br> Please check your username and password.<br></p>";
+                    }
+                  ?>
+                  <form action="php/process_login.php" method="post" name="login_form" id="login_form">
                     <div class="md-form">
                       <input type="text" name="username" id="username" class="form-control" />
                       <label for="username">Username</label>
@@ -39,23 +61,36 @@
                       <label for="password">Password</label>
                     </div>
                     <div class="text-center my-3">
-                      <input type="button" value="Login" onclick="formhash(this.form, this.form.password);" class="btn light-blue lighten-1"/>
+                      <input type="button" value="Login" onclick="login_check(this.form,this.form.username, this.form.password);" class="btn btn-primary"/>
                     </div>
                   </form>
 
                   <p class="text-center my-3">
                     Don't have an account?
-                    <a href='register.php'class="custom-link hvr-grow hvr-underline-reveal mx-2">Register</a>
+                    <a href='register.php'class="custom-link hvr-grow mx-2">Register</a>
                   </p>
+                </div>
+            </div>
+          </div>
+        </div>
+        <?php else: ?>
+        <div class ="background2">
+            <div class="container h-100">
+              <div class = "d-flex row flex-center">
+                <div class = "col-12 text-center mt-5 animated slideInUp">
+                  <form action="/mountains/search.php" method="get">
+                    <input type="submit" value="Search Mountain Database" onclick="/mountains/search.php" class="btn btn-primary mt-5"/>
+                  </form>
                 </div>
               </div>
             </div>
-          </div>
-        <?php else: ?>
-          <a href="php/logout.php" class="btn btn-default">Logout</a>
+        </div>
         <?php endif; ?>
       </div>
-    </div>
+
+      <div id= "foot-placeholder"></div>
+
+
 
     <script type="text/JavaScript" src="javascripts/jquery-3.2.1.min.js"></script>
     <script type="text/JavaScript" src="javascripts/sha512.js"></script>

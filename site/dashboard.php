@@ -12,11 +12,27 @@
 <html>
   <head>
     <title>Dashboard</title>
+    <link rel="icon" href="/myfavicon.ico"/>
+
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("../navigation.php", function(data){
+          $("#nav-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("../footer.html", function(data){
+          $("#foot-placeholder").replaceWith(data);
+      });
+    </script>
 
     <link rel="stylesheet" href="../stylesheets/custom.css" />
     <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
   </head>
   <body>
+    <div id="nav-placeholder"></div>
     <div class="background">
       <div class="container h-100">
         <?php
@@ -25,10 +41,10 @@
             echo "<p class='error'>Error Searching For Mountains</p>";
           }
         ?>
-        <div class="row flex-center">
+        <div class="row flex-center  animated slideInUp ">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-              <div class="card-header default-color text-center">
+            <div class="card dashboard-details">
+              <div class="card-header primary-color text-center">
                 <h2 class="h2-responsive" style="color: white;">Dashboard</h2>
               </div>
               <div class="card-body">
@@ -137,6 +153,8 @@
           </div>
         </div>
       </div>
+      <div id="foot-placeholder"></div>
+
     </div>
 
     <script type="text/JavaScript" src="../javascripts/jquery-3.2.1.min.js"></script>
