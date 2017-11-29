@@ -23,11 +23,30 @@
 <html>
   <head>
     <title>Search</title>
+    <link rel="icon" href="/myfavicon.ico"/>
+
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("../navigation.php", function(data){
+          $("#nav-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("../footer.html", function(data){
+          $("#foot-placeholder").replaceWith(data);
+      });
+    </script>
 
     <link rel="stylesheet" href="../stylesheets/custom.css" />
+    
   </head>
   <body>
-    <div class="background">
+
+    <div id= "nav-placeholder"></div>
+
+    <div class="background animated fadeIn">
       <div class="container h-100">
         <?php
           if(isset($_GET["error"]))
@@ -37,12 +56,12 @@
         ?>
         <div class="row flex-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card">
-              <div class="card-header default-color text-center">
+            <div class="card animated fadeIn">
+              <div class="card-header primary-color text-center">
                 <h2 class="h2-responsive" style="color: white;">Results</h2>
               </div>
               <div class="card-body">
-                <a href="search.php" style="color: #2BBBAD"> << Return to Search</a>
+                <a href="search.php" class="custon-link"> << Return to Search</a>
                 <br />
                 <?php if(empty($curr_mountains)): ?>
                   <h2 class="text-center">No Mountains Found</h2>
@@ -75,6 +94,8 @@
           </div>
         </div>
       </div>
+      <div id= "foot-placeholder"></div>
+
     </div>
 
     <script type="text/JavaScript" src="../javascripts/jquery-3.2.1.min.js"></script>

@@ -19,7 +19,7 @@
 <html>
   <head>
     <title>Comments</title>
-
+    <link rel="icon" href="/myfavicon.ico"/>
     <link rel="stylesheet" href="../stylesheets/custom.css" />
   </head>
   <body>
@@ -34,7 +34,7 @@
         <div class="row flex-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
-              <div class="card-header default-color text-center">
+              <div class="card-header primary-color text-center">
                 <h2 class="h2-responsive" style="color: white;">Comments</h2>
               </div>
               <div class="card-body">

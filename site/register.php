@@ -8,19 +8,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register</title>
     <link rel="stylesheet" href="stylesheets/custom.css"  />
+    <link rel="icon" href="/myfavicon.ico"/>
+
+
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("navigation.php", function(data){
+          $("#nav-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("footer.html", function(data){
+          $("#foot-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <script>
+        document.onkeydown=function(evt){
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if(keyCode == 13)
+            {
+              regformhash(registration_form,            registration_form.username,
+                          registration_form.password,   registration_form.confirmation,
+                          registration_form.email,      registration_form.first_name,
+                          registration_form.last_name,  registration_form.age,
+                          registration_form.phone,      registration_form.address);
+            }
+        }
+    </script>
   </head>
   <body>
-    <div class="background">
-      <div class="container h-100">
+    <div id="nav-placeholder"></div>
+    <div class ="background-white">
+      <div class="container py-5">
         <?php if(!empty($error_msg)) { echo $error_msg; } ?>
-        <div class="row flex-center">
-          <div class="col-12 col-lg-4">
-            <div class="card animated fadeIn">
-              <div class="card-header default-color text-center">
-                <h2 class="h2-responsive" style="color: white;">Register</h2>
-              </div>
-              <div class="card-body">
-                <form action="php/process_registration.php" method="post" name="registration_form">
+        <div class="row mt-5">
+          <div class="col-8  animated slideInUp">
+                <h2 class="h2-responsive text-center" style="color: Black;">Register</h2>
+              <div class="card-body-register">
+                <form action="php/process_registration.php" method="post" name="registration_form" id="registration_form">
                   <div class="md-form">
                     <input type="text" name="email" id="email" />
                     <label for="email">Email</label>
@@ -62,7 +90,7 @@
                   </div>
 
                   <div class="text-center my-3">
-                    <input type="button" value="Register" class="btn btn-default"
+                    <input type="button" value="Register" class="btn btn-primary"
                       onclick="regformhash(this.form, this.form.username, this.form.password,
                                this.form.confirmation, this.form.email, this.form.first_name,
                                this.form.last_name, this.form.age, this.form.phone, this.form.address);" />
@@ -70,13 +98,28 @@
                 </form>
                 <p class="text-center my-3">
                   Return to the
-                  <a href="index.php" style="color: #2BBBAD;">login page</a>
+                  <a href="index.php" class="custom-link">login page</a>
                 </p>
               </div>
+          </div>
+          <div class = "col animated slideInRight">
+          <div class="card">
+            <h4 class="card-header primary-color white-text text-center"><b>Why Register?</b></h4>
+            <div class="card-body">
+              <p class="card-text">
+              Follow your friends to display them on your dashboard!
+              This also will let you leave comments on mountains for others to see!
+            </p>
+            <a class="custom-link" href="/about.php"><br><br>Want to learn more about our site?<br></a>
+
             </div>
           </div>
         </div>
+
+        </div>
       </div>
+
+      <div id="foot-placeholder"></div>
     </div>
 
     <script type="text/JavaScript" src="javascripts/jquery-3.2.1.min.js"></script>

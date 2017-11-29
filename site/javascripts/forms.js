@@ -11,6 +11,15 @@ function formhash(form, password)
   form.submit();
 }
 
+function login_check(form, username, password){
+  if(username.value == "" || password.value == "")
+  {
+    alert("You did not provide all of the required information!");
+    return false;
+  }
+  formhash(form, password);
+}
+
 function regformhash(form, username, password, confirmation, email, first_name, last_name, age, phone, address)
 {
   if(username.value == "" || password.value == "" || confirmation.value == "" || email.value == "" ||

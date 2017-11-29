@@ -9,12 +9,40 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="icon" href="/myfavicon.ico"/>
+
     <title>Search</title>
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("../navigation.php", function(data){
+          $("#nav-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+      <script>
+      $.get("../footer.html", function(data){
+          $("#foot-placeholder").replaceWith(data);
+      });
+    </script>
+
+    <script>
+        document.onkeydown=function(evt){
+            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+            if(keyCode == 13)
+            {
+                document.mountain_search_form.submit();
+            }
+        }
+    </script>
 
     <link rel="stylesheet" href="../stylesheets/custom.css" />
   </head>
   <body>
-    <div class="background">
+
+    <div id= "nav-placeholder"></div>
+
+    <div class="background animated fadeIn">
       <div class="container h-100">
         <?php
           if(isset($_GET["error"]))
@@ -24,13 +52,7 @@
         ?>
         <div class="row flex-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card animated fadeIn">
-              <div class="card-header default-color text-center">
-                <h2 class="h2-responsive" style="color: white;">Search Mountains</h2>
-              </div>
-              <div class="card-body">
                 <form action="results.php?page=1" method="post" name="mountain_search_form">
-
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="md-form">
@@ -39,7 +61,6 @@
                       </div>
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                       <div class="form-group">
@@ -51,7 +72,6 @@
                         </select>
                       </div>
                     </div>
-
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                       <div class="form-group">
                         <label for="state" style="color: #757575;">State:</label>
@@ -99,16 +119,18 @@
                   </div>
 
                   <div class="text-center my-3">
-                    <input type="button" value="Search" onclick="this.form.submit();" class="btn btn-default"/>
+                    <input type="button" value="Search" onclick="this.form.submit();" class="btn btn-primary"/>
                   </div>
 
                 </form>
-              </div>
-            </div>
           </div>
         </div>
       </div>
+      <div id= "foot-placeholder"></div>
+
     </div>
+
+
 
     <script type="text/JavaScript" src="../javascripts/jquery-3.2.1.min.js"></script>
     <script type="text/JavaScript" src="../javascripts/sha512.js"></script>
@@ -116,5 +138,6 @@
     <script type="text/JavaScript" src="../javascripts/popper.min.js"></script>
     <script type="text/JavaScript" src="../javascripts/bootstrap.min.js"></script>
     <script type="text/JavaScript" src="../javascripts/mdb.min.js"></script>
+
   </body>
 </html>

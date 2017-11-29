@@ -18,7 +18,7 @@
       $phone, $address, $dbh) == true)
     {
       login($username, $password, $dbh);
-      header("Location: ../protected_page.php");
+      header("Location: ../index.php");
     }
     else
     {

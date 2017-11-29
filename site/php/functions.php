@@ -423,9 +423,9 @@
     // Button for going to previous page
     $prev_page = str_replace(("page=" . $page_number), ("page=" . ($page_number-1)), $_SERVER["REQUEST_URI"]);
     if($page_number > 1)
-      echo ("<a class='btn btn-sm px-2 btn-default' href='" . $prev_page . "'><b> << </b></a>");
+      echo ("<a class='btn btn-sm px-2 btn-primary' href='" . $prev_page . "'><b> << </b></a>");
     else
-      echo ("<a class='btn btn-sm px-2 btn-default disabled'><b> << </b></a>");
+      echo ("<a class='btn btn-sm px-2 btn-primary disabled'><b> << </b></a>");
 
     // Set the starting value for the loop
     $loop_start = ((ceil($page_number / $link_count) - 1) * $link_count) + 1;
@@ -439,8 +439,8 @@
     if($loop_start > $link_count)
     {
       $uri = str_replace(("page=" . $page_number), "page=1", $_SERVER["REQUEST_URI"]);
-      echo ("<a class='mx-2'style='color: #2BBBAD;' href='" . $uri . "'><b>1</b></a>");
-      echo "<span style='color: #2BBBAD;'>...</span>";
+      echo ("<a class='mx-2'style='color: #4285F4;' href='" . $uri . "'><b>1</b></a>");
+      echo "<span style='color: #4285F4;'>...</span>";
     }
 
     // Loop and create links to the specified pages
@@ -448,25 +448,25 @@
     {
       $uri = str_replace(("page=" . $page_number), ("page=" . ($i)), $_SERVER["REQUEST_URI"]);
       if($i == $page_number)
-        echo ("<a class='mx-2' style='color: #2BBBAD; text-decoration: underline;' href='" . $uri . "'><b>" . $i . "</b></a>");
+        echo ("<a class='mx-2' style='color: #4285F4; text-decoration: underline;' href='" . $uri . "'><b>" . $i . "</b></a>");
       else
-        echo ("<a class='mx-2'style='color: #2BBBAD;' href='" . $uri . "'><b>" . $i . "</b></a>");
+        echo ("<a class='mx-2'style='color: #4285F4;' href='" . $uri . "'><b>" . $i . "</b></a>");
     }
 
     // Display link to go to the last page
     if($loop_end != $total_pages)
     {
       $uri = str_replace(("page=" . $page_number), ("page=" . $total_pages), $_SERVER["REQUEST_URI"]);
-      echo "<span style='color: #2BBBAD;'>...</span>";
-      echo ("<a class='mx-2'style='color: #2BBBAD;' href='" . $uri . "'><b>" . $total_pages . "</b></a>");
+      echo "<span style='color: #4285F4;'>...</span>";
+      echo ("<a class='mx-2'style='color: #4285F4;' href='" . $uri . "'><b>" . $total_pages . "</b></a>");
     }
 
     // Button for going to the next page
     $next_page = str_replace(("page=" . $page_number), ("page=" . ($page_number+1)), $_SERVER["REQUEST_URI"]);
     if(($page_number * $limit) <= $total_count)
-      echo ("<a class='btn btn-sm px-2 btn-default' href='" . $next_page . "'><b> >> </b></a>");
+      echo ("<a class='btn btn-sm px-2 btn-primary' href='" . $next_page . "'><b> >> </b></a>");
     else
-      echo ("<a class='btn btn-sm px-2 btn-default disabled'><b> >> </b></a>");
+      echo ("<a class='btn btn-sm px-2 btn-primary disabled'><b> >> </b></a>");
   }
 
 
@@ -475,7 +475,7 @@
   {
     if($key = file_get_contents("../api_keys/google_maps_key.txt"))
     {
-      echo ("<iframe class='google_map' frameborder='0' style='border:0' ");
+      echo ("<iframe class='google_map' frameborder='0' alt='Google Map API is not available at this time.' style='border:0' ");
       echo ("src='https://www.google.com/maps/embed/v1/place?key=" . $key);
       echo ("&zoom=12&q=" . $latitude . "," . $longitude . "' allowfullscreen> ");
       echo ("</iframe>");
