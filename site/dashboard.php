@@ -34,16 +34,16 @@
   <body>
     <div id="nav-placeholder"></div>
     <div class="background">
-      <div class="container h-100">
+      <div class="container py-5">
         <?php
           if(isset($_GET["error"]))
           {
             echo "<p class='error'>Error Searching For Mountains</p>";
           }
         ?>
-        <div class="row flex-center  animated slideInUp ">
+        <div class="row animated slideInUp py-5 ">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="card dashboard-details">
+            <div class="card">
               <div class="card-header primary-color text-center">
                 <h2 class="h2-responsive" style="color: white;">Dashboard</h2>
               </div>
@@ -66,8 +66,8 @@
                       <ul>
                         <?php foreach($top_rated_climbs as $mountain) { ?>
                           <a href=<?php echo ("mountains/show.php?id=" . $mountain["id"]); ?>>
-                            <div class="row list-item u-hover--grey mx-2">
-                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left">
+                            <div class="row list-item mx-2">
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left custom-link">
                                 <?php echo $mountain["name"]; ?>
                               </div>
                               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
@@ -99,8 +99,8 @@
                       <ul>
                         <?php foreach($popular_climbs as $mountain) { ?>
                           <a href=<?php echo ("mountains/show.php?id=" . $mountain["id"]); ?>>
-                            <div class="row list-item u-hover--grey mx-2">
-                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left">
+                            <div class="row list-item mx-2">
+                              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left custom-link">
                                 <?php echo $mountain["name"]; ?>
                               </div>
                               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right">
@@ -133,8 +133,11 @@
                         <div class="row custom-list-item mx-2">
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-left">
                             <i class="mx-1 fa fa-user-circle-o" aria-hidden="true"></i>
-                            <a class="custom-link" href="#"><?php echo $item["username"]; ?></a>
+                            <a class="custom-link" href=<?php echo "users/show.php?id=" . $item["user_id"]?>>
+                              <?php echo $item["username"]; ?>
+                            </a>
                             climbed
+
                             <a class="custom-link" href=<?php echo ("mountains/show.php?id=" . $item["mountain_id"]); ?>>
                               <?php echo $item["name"]; ?>
                             </a>

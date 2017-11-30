@@ -53,7 +53,9 @@
                           <div class="d-flex col-12 justify-content-between">
                             <span>
                               <i class="mx-2 fa fa-user-circle-o" aria-hidden="true" style="font-size: 150%"></i>
-                              <b><?php echo ($user["username"]); ?></b>
+                              <a class = "custom-link" href=<?php echo "/users/show.php?id=" . $user["id"];?>>
+                                <b><?php echo ($user["username"]); ?></b>
+                              </a>
                               <small><?php echo (" climbed it " . time_elapsed_string($user["created_at"])); ?></small>
                             </span>
                             <?php if(check_login($dbh) && $_SESSION["user_id"] != $user["id"]): ?>

@@ -2,6 +2,7 @@
   include_once "../php/db_connect.php";
   include_once "../php/functions.php";
 
+  $user = array();
   if(isset($_GET["id"]))
     $user = find_user($_GET["id"], $dbh);
   else
@@ -36,7 +37,7 @@
     <div id= "nav-placeholder"></div>
 
     <div class="background-white">
-      <div class="container p-5 h-100">
+      <div class="container p-5">
         <?php
           if(isset($_GET["error"]))
           {
@@ -65,49 +66,51 @@
             <?php if(empty($user)): ?>
               <h4 class="h4-responsive mb-4">No User</h4>
             <?php elseif(check_login($dbh) && ($_SESSION["user_id"] == $user["id"] || check_admin($_SESSION["user_id"], $dbh)) ): ?>
-              <form action=<?php echo "update.php?id=" . $user["id"]; ?> method="post" name="user_search_form">
+              <form action=<?php echo "update.php?id=" . $user["id"]; ?> method="post" name="user_edit_form" id="user_edit_form">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="text" name="first_name" id="first_name" class="form-control" value=<?php echo $user["first_name"]; ?>>
+                      <input type="text" name="first_name" id="first_name" class="form-control" value='<?php echo $user["first_name"]; ?>'>
                       <label for="first_name">First Name</label>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="text" name="last_name" id="last_name" class="form-control" value=<?php echo $user["last_name"]; ?>>
+                      <input type="text" name="last_name" id="last_name" class="form-control" value='<?php echo $user["last_name"]; ?>'>
                       <label for="last_name">Last Name</label>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="text" name="email" id="email" class="form-control" value=<?php echo $user["email"]; ?>>
+                      <input type="text" name="email" id="email" class="form-control" value='<?php echo $user["email"]; ?>'>
                       <label for="email">Email</label>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="number" name="age" id="age" class="form-control" value=<?php echo $user["age"]; ?>>
+                      <input type="number" name="age" id="age" class="form-control" value='<?php echo $user["age"]; ?>'>
                       <label for="age">Age</label>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="text" name="phone" id="phone" class="form-control" value=<?php echo $user["telephone"]; ?>>
+                      <input type="text" name="phone" id="phone" class="form-control" value='<?php echo $user["telephone"]; ?>'>
                       <label for="phone">Telephone</label>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="text" name="address" id="address" class="form-control" value=<?php echo $user["address"]; ?>>
+                      <input type="text" name="address" id="address" class="form-control" value='<?php echo $user["address"]; ?>'>
                       <label for="address">Address</label>
                     </div>
                   </div>
                 </div>
 
-
                 <div class="text-center my-3">
-                  <input type="button" value="Save" onclick="this.form.submit();" class="btn btn-primary"/>
+                  <a class="btn btn-primary" onclick="user_edit_form.submit();">
+                    <i class="fa fa-floppy-o mr-2" aria-hidden="true"></i>
+                    Save
+                  </a>
                 </div>
 
               </form>
