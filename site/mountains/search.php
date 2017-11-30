@@ -98,13 +98,13 @@
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                       <div class="md-form">
-                        <input type="number" name="max_elevation" id="max_elevation" class="form-control" />
+                        <input type="number" min="1" max="25000" name="max_elevation" id="max_elevation" class="form-control" />
                         <label for="max_elevation">Maximum Elevation</label>
                       </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                       <div class="md-form">
-                        <input type="number" name="min_elevation" id="min_elevation" class="form-control" />
+                        <input type="number" min="1" max="25000" name="min_elevation" id="min_elevation" class="form-control" />
                         <label for="min_elevation">Minimum Elevation</label>
                       </div>
                     </div>
@@ -126,7 +126,7 @@
                   </div>
 
                   <div class="text-center my-3">
-                    <input type="button" value="Search" onclick="mountain_search_form.submit();" class="btn btn-primary"/>
+                    <input type="submit" value="Search" class="btn btn-primary"/>
                   </div>
 
                 </form>
