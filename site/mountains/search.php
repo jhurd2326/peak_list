@@ -21,7 +21,7 @@
 
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
       <script>
-      $.get("../footer.html", function(data){
+      $.get("../footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
       });
     </script>
@@ -42,15 +42,21 @@
 
     <div id= "nav-placeholder"></div>
 
-    <div class="background animated fadeIn">
-      <div class="container h-100">
+    <div class="background-white animated fadeIn">
+      <div class="container py-5">
         <?php
           if(isset($_GET["error"]))
           {
             echo "<p class='error'>Error Searching For Mountains</p>";
           }
         ?>
-        <div class="row flex-center">
+
+        <div class = "row mt-5 text-center text-lg-left text-md-left">
+          <div class = "col">
+            <h1 class = "h1-responsive">Search Mountains</h1>
+          </div>
+        </div>
+        <div class="row mt-5">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <form action="results.php?page=1" method="post" name="mountain_search_form">
                   <div class="row">

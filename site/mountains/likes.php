@@ -35,7 +35,7 @@
         <div class="row flex-center">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
-              <div class="card-header default-color text-center">
+              <div class="card-header primary-color text-center">
                 <h2 class="h2-responsive" style="color: white;">Likes</h2>
               </div>
               <div class="card-body">
@@ -59,11 +59,11 @@
                             <?php if(check_login($dbh) && $_SESSION["user_id"] != $like["id"]): ?>
                               <?php if(user_following($_SESSION["user_id"], $like["id"], $dbh)): ?>
                                 <div>
-                                  <button class="btn-sm btn-outline-default mx-0"><b>Following</b></button>
+                                  <button class="btn-sm btn-outline-primary mx-0"><b>Following</b></button>
                                 </div>
                               <?php else: ?>
                                 <div>
-                                  <a href=<?php echo("/users/follow.php?user=" . $like["id"]); ?> class="btn btn-sm btn-default mx-0"><b>Follow</b></a>
+                                  <a href=<?php echo("/users/follow.php?user=" . $like["id"]); ?> class="btn btn-sm btn-primary mx-0"><b>Follow</b></a>
                                 </div>
                               <?php endif; ?>
                             <?php endif; ?>

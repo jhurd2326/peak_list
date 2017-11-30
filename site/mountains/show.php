@@ -24,7 +24,7 @@
 
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
       <script>
-      $.get("../footer.html", function(data){
+      $.get("../footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
       });
     </script>
@@ -66,13 +66,13 @@
               <?php display_google_map($mountain["latitude"], $mountain["longitude"]); ?>
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12">
-                <h2 class="h2-responsive" style="color: Black;">
+                <h2 class="h2-responsive" style="color: Black;"><strong>
                   <?php if(empty($mountain)): ?>
                     Error
                   <?php else: ?>
                     <?php echo $mountain["name"]; ?>
                   <?php endif; ?>
-                </h2>
+                </strong></h2>
 
               <div class="mountain-details" style="position: relative;">
                   <!--  Mountain Information  -->
@@ -221,7 +221,7 @@
                   <small><?php echo (" " . time_elapsed_string($comment["created_at"])); ?></small>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-4">
-                  <p><?php echo ($comment["content"]); ?></p>
+                  <p><?php  echo ($comment["content"]);?></p>
                 </div>
               </div>
             <?php } ?>

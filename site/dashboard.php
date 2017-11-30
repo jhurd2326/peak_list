@@ -23,7 +23,7 @@
 
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
       <script>
-      $.get("../footer.html", function(data){
+      $.get("../footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
       });
     </script>

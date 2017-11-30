@@ -34,27 +34,27 @@
 
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
       <script>
-      $.get("../footer.html", function(data){
+      $.get("../footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
       });
     </script>
 
     <link rel="stylesheet" href="../stylesheets/custom.css" />
-    
+
   </head>
   <body>
 
     <div id= "nav-placeholder"></div>
 
     <div class="background animated fadeIn">
-      <div class="container h-100">
+      <div class="container py-5 ">
         <?php
           if(isset($_GET["error"]))
           {
             echo "<p class='error'>Error Searching For Mountains</p>";
           }
         ?>
-        <div class="row flex-center">
+        <div class="row mt-5">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card animated fadeIn">
               <div class="card-header primary-color text-center">
@@ -68,23 +68,21 @@
                 <?php else: ?>
                   <br />
 
-                  <ul class = "search-list">
                     <?php foreach($curr_mountains as $mountain) { ?>
                       <a href=<?php echo ("show.php?id=" . $mountain["id"]); ?>>
-                        <div class="row list-item u-hover--grey mx-4">
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                        <div class="row list-item u-hover--grey">
+                          <div class="col-lg-4 col-md-4 col-sm-12 text-center custom-link">
                             <?php echo $mountain["name"]; ?>
                           </div>
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                          <div class="col-lg-4 col-md-4 col-sm-12 text-center">
                             <?php echo $mountain["state"]; ?>
                           </div>
-                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                          <div class="col-lg-4 col-md-4 col-sm-12 text-center">
                             <?php echo $mountain["country"]; ?>
                           </div>
                         </div>
                       </a>
                     <?php } ?>
-                  </ul>
                   <div class="text-center">
                     <?php display_pagination($_SESSION["mountains"], $page_number, $limit); ?>
                   </div>

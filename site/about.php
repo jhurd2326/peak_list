@@ -20,7 +20,7 @@
 
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
       <script>
-      $.get("footer.html", function(data){
+      $.get("footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
       });
     </script>
@@ -32,27 +32,27 @@
     <div class="background-white animated fadeIn">
       <div class="container py-5">
         <div class = "row mt-5">
-          <div class = "col-8  animated slideInUp">
-            <h1 >Thank you for visiting RangeFinder.</h1><hr>
-            <h2>About</h2><hr>
-            <p>RangeFinder is a site where mountain climbers
+          <div class = "col--lg-8 col  animated slideInUp">
+            <h1 class = "h1-responsive" >Thank you for visiting RangeFinder.</h1><hr>
+            <h2 class= "h2-responsive">About</h2><hr>
+            <p class = "text-justify">RangeFinder is a site where mountain climbers
                and outdoor enthusiasts can search for thier favorite mountains
                and get the details they need about them. The site was designed
                for a class project by Jake Hurd and Benjamin Hargett at Clemson
                 University. </p>
-            <h2>Features</h2><hr>
-            <h3>Search</h3>
-            <p> Our database has thousands of mountains and all their data from
+            <h2 class= "h2-responsive">Features</h2><hr>
+            <h3 class= "h3-responsive">Search</h3>
+            <p class = "text-justify"> Our database has thousands of mountains and all their data from
               places all over North America. You can search using a variety of methods
               including by name, location, or even their Latitude and Longitude. Have you
               ever been hiking and you wish you knew what mountains you passed over? With our
               database, you can easily find the mountains you've been looking for.
             </p>
-            <h3>Follow</h3>
-            <p>Want to know where your friends have been hiking? Follow them to put
+            <h3 class= "h3-responsive">Follow</h3>
+            <p class = "text-justify">Want to know where your friends have been hiking? Follow them to put
             them on your user dashboard.</p>
-            <h3>Like/Climb</h3>
-            <p>You can easily like a mountain or mark it as climbed so that all your
+            <h3 class= "h3-responsive">Like/Climb</h3>
+            <p class = "text-justify">You can easily like a mountain or mark it as climbed so that all your
               followers can see where youve been or maybe where you'd like to go!</p><hr>
           </div>
           <div class = "col-lg-4 col-sm-12  animated slideInRight">
