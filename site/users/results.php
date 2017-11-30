@@ -9,7 +9,10 @@
   $limit = 10;
 
   if(isset($_GET["page"]))
+  {
     $page_number = $_GET["page"];
+    $_SESSION["user_page"] = $page_number;
+  }
   else
     header("Location: results.php?page=1");
 

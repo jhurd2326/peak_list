@@ -48,39 +48,53 @@
         </div>
         <div class="row flex-center">
           <div class="col-6 text-left">
-                <h2 class="h2-responsive mb-4" style="color: Black;"><strong>
-                  <?php if(empty($user)): ?>
-                    Error
-                  <?php else: ?>
-                    <?php echo $user["first_name"] . " " . $user["last_name"]; ?>
+            <?php if(empty($user)): ?>
+              <h2 class="h2-responsive" style="color: Black;">
+                <strong>Error</strong>
+              </h2>
+            <?php else: ?>
+              <div class="d-flex justify-content-between">
+                <h2 class="h2-responsive" style="color: Black;">
+                  <strong><?php echo $user["first_name"] . " " . $user["last_name"]; ?></strong>
+                </h2>
+                <div>
+                  <?php if(check_login($dbh) && ($_SESSION["user_id"] == $user["id"] || check_admin($_SESSION["user_id"], $dbh)) ): ?>
+                    <a href=<?php echo("/users/edit.php?id=" . $user["id"]); ?> class="custom-link"><b>Edit</b></a>
                   <?php endif; ?>
-                </strong></h2><hr>
+                  <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) ): ?>
+                    |
+                    <a href="#" class="custom-link"><b>Delete</b></a>
+                  <?php endif; ?>
+                </div>
+              </div>
+            <?php endif; ?>
+            <hr>
 
-                  <!--  user Information  -->
+            <!--  user Information  -->
+            <?php if(empty($user)): ?>
+              <h4 class="h4-responsive black-text">No User</h4>
+            <?php else: ?>
+              <p> <b>Username: </b> <?php echo $user["username"]?></p>
+              <p> <b>Age: </b> <?php echo $user["age"]?></p>
+              <p> <b>Phone: </b> <?php echo $user["telephone"]?></p>
+              <p> <b>Email: </b> <?php echo $user["email"]?></p>
+              <p> <b>Address: </b> <?php echo $user["address"]?></p>
 
-
-                          <p> <b>Username: </b> <?php echo $user["username"]?></p>
-                          <p> <b>Age: </b> <?php echo $user["age"]?></p>
-                          <p> <b>Phone: </b> <?php echo $user["telephone"]?></p>
-                          <p> <b>Email: </b> <?php echo $user["email"]?></p>
-                          <p> <b>Address: </b> <?php echo $user["address"]?></p>
-
-
-                    <?php if(check_login($dbh) && $_SESSION["user_id"] != $user["id"]): ?>
-                      <?php if(user_following($_SESSION["user_id"], $user["id"], $dbh)): ?>
-                        <div>
-                          <button class="btn-sm btn-outline-primary mx-0"><b>Following</b></button>
-                        </div>
-                      <?php else: ?>
-                        <div>
-                          <a href=<?php echo("/users/follow.php?user=" . $user["id"]); ?> class="btn btn-sm btn-primary mx-0"><b>Follow</b></a>
-                        </div>
-                      <?php endif; ?>
-                    <?php endif; ?>
-
+              <?php if(check_login($dbh) && $_SESSION["user_id"] != $user["id"]): ?>
+                <?php if(user_following($_SESSION["user_id"], $user["id"], $dbh)): ?>
+                  <div>
+                    <button class="btn-sm btn-outline-primary mx-0"><b>Following</b></button>
+                  </div>
+                <?php else: ?>
+                  <div>
+                    <a href=<?php echo("/users/follow.php?user=" . $user["id"]); ?> class="btn btn-sm btn-primary mx-0"><b>Follow</b></a>
+                  </div>
+                <?php endif; ?>
+              <?php endif; ?>
+            <?php endif; ?>
           </div> <!-- End Col 2 -->
 
-          
+
         </div> <!-- End First Row -->
       </div> <!-- End Container -->
 

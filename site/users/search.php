@@ -3,7 +3,7 @@
   include_once "../php/functions.php";
   include_once "../php/constants.php";
 
-  unset($_SESSION["user_results"]);
+  unset($_SESSION["user_results"], $_SESSION["user_page"]);
 ?>
 
 <!DOCTYPE html>
