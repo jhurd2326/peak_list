@@ -207,7 +207,9 @@
             <?php foreach($comments as $comment) { ?>
               <div class="row px-4 white-text">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-2">
-                  <b><?php echo ($comment["username"]); ?></b>
+                  <a class ="comments-button" href=<?php echo "/users/show.php?id=" . $comment["user_id"]; ?>>
+                    <b><?php echo ($comment["username"]); ?></b>
+                  </a>
                   <small><?php echo (" " . time_elapsed_string($comment["created_at"])); ?></small>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-4">
