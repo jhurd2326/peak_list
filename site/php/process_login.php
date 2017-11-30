@@ -9,11 +9,11 @@
 
     if(login($username, $password, $dbh) == true)
     {
-      header("Location: ../dashboard.php");
+      header("Location: /mountains/search.php");
     }
     else
     {
-      header("Location: ../index.php?error=1");
+      header("Location: /index.php?error=1");
     }
   }
   else { echo "Invalid Request"; }

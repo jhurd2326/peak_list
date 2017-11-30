@@ -7,6 +7,7 @@
     $sql = "SELECT id, username, password_hash FROM users WHERE username = :username LIMIT 1";
     if($query = $dbh -> prepare($sql))
     {
+
       $query -> bindValue(":username", $username);
       $query -> execute();
 
@@ -16,15 +17,18 @@
         $user_id = $user["id"];
         $db_username = $user["username"];
         $db_password = $user["password_hash"];
+        $encrypted_password = hash("sha512", $password);
 
-        if(password_verify($password, $db_password))
+        if($encrypted_password == $db_password)
         {
+
           $user_id = preg_replace("/[^0-9]/", "", $user_id);
           $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $username);
 
           $_SESSION["user_id"] = $user_id;
           $_SESSION["username"] = $db_username;
           $_SESSION["login_hash"] = hash("sha512", $db_password);
+
           return true;
         }
         else { return false; }
@@ -55,7 +59,7 @@
           $password = $user["password_hash"];
           $login_check = hash("sha512", $password);
 
-          if(hash_equals($login_check, $login_hash)) { return true; }
+          if($login_check ==  $login_hash) { return true; }
           else { return false; }
         }
         else { return false; }
@@ -86,7 +90,7 @@
 
     if(empty($error_msg))
     {
-      $password = password_hash($password, PASSWORD_DEFAULT);
+      $password = hash("sha512", $password);
       $sql = "INSERT INTO users (username, password_hash, first_name, last_name,
               age, telephone, email, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -484,26 +488,27 @@
   }
 
   /*** Returns a string of elapsed time in 'time ago ' format ***/
-  function time_elapsed_string($datetime, $full = false)
+  function time_elapsed_string($date)
   {
-    $now = new DateTime;
-    $ago = new DateTime($datetime);
-    $diff = $now->diff($ago);
+    $timestamp = strtotime($date);
 
-    $diff->w = floor($diff->d / 7);
-    $diff->d -= $diff->w * 7;
+	   $strTime = array("second", "minute", "hour", "day", "month", "year");
+	   $length = array("60","60","24","30","12","10");
 
-    $string = array('y' => 'year', 'm' => 'month', 'w' => 'week', 'd' => 'day',
-                    'h' => 'hour', 'i' => 'minute', 's' => 'second');
+	   $currentTime = time();
+	   if($currentTime >= $timestamp) {
+			$diff     = time()- $timestamp;
+			for($i = 0; $diff >= $length[$i] && $i < count($length)-1; $i++) {
+			$diff = $diff / $length[$i];
+			}
 
-    foreach ($string as $k => &$v) {
-      if ($diff->$k)
-        $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+			$diff = round($diff);
+      if($diff == 0)
+        return " just now";
+      else if($diff == 1)
+        return $diff . " " . $strTime[$i] . " ago ";
       else
-        unset($string[$k]);
+			   return $diff . " " . $strTime[$i] . "s ago ";
     }
-
-    if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' ago' : 'just now';
   }
 ?>
