@@ -90,12 +90,12 @@
 
               <div class="col-4 text-right">
                 <?php if(check_login($dbh) && ($_SESSION["user_id"] == $user["id"] || check_admin($_SESSION["user_id"], $dbh)) ): ?>
-                    <a href=<?php echo("/users/edit.php?id=" . $user["id"]); ?> class="custom-link"><b>Edit</b></a>
-                  <?php endif; ?>
-                  <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) ): ?>
-                    |
-                    <a href="#" class="custom-link"><b>Delete</b></a>
-                  <?php endif; ?>
+                  <a href=<?php echo("/users/edit.php?id=" . $user["id"]); ?> class="custom-link"><b>Edit</b></a>
+                <?php endif; ?>
+                <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) ): ?>
+                  |
+                  <a href="#" class="custom-link"><b>Delete</b></a>
+                <?php endif; ?>
               </div>
             </div>
             <div class="row">

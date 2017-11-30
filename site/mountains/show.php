@@ -56,51 +56,61 @@
               <?php display_google_map($mountain["latitude"], $mountain["longitude"]); ?>
           </div>
           <div class="col-lg-6 col-md-12 col-sm-12">
-                <h2 class="h2-responsive" style="color: Black;"><strong>
-                  <?php if(empty($mountain)): ?>
-                    Error
-                  <?php else: ?>
-                    <?php echo $mountain["name"]; ?>
-                  <?php endif; ?>
-                </strong></h2>
+              <?php if(empty($mountain)): ?>
+                <h2 class="h2-responsive" style="color: Black;"><strong>Error</strong></h2>
+              <?php else: ?>
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <h2 class="h2-responsive" style="color: Black;"><strong><?php echo $mountain["name"]; ?></strong></h2>
+                  </div>
+                  <div>
+                    <?php if(check_login($dbh) && ($_SESSION["user_id"] == $user["id"] || check_admin($_SESSION["user_id"], $dbh)) ): ?>
+                      <a href=<?php echo("edit.php?id=" . $mountain["id"]); ?> class="custom-link"><b>Edit</b></a>
+                    <?php endif; ?>
+                    <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) ): ?>
+                      |
+                      <a href="#" class="custom-link"><b>Delete</b></a>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              <?php endif; ?>
 
               <div class="mountain-details" style="position: relative;">
-                  <!--  Mountain Information  -->
+                <!--  Mountain Information  -->
 
-                    <div class="row">
-                        <div class ="col">
-                          <p> <b>State/Province:</b> <?php echo $mountain["state"]; ?></p>
-                      </div>
+                <div class="row">
+                    <div class ="col">
+                      <p> <b>State/Province:</b> <?php echo $mountain["state"]; ?></p>
+                  </div>
+                </div>
+                <div class =" row">
+                    <div class = "col">
+                      <p><b> Country:</b> <?php echo $mountain["country"]; ?></p>
                     </div>
-                    <div class =" row">
-                        <div class = "col">
-                          <p><b> Country:</b> <?php echo $mountain["country"]; ?></p>
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="row">
-                      <div class="col">
-                        <p><b>Elevation:</b> <?php echo $mountain["elevation"]; ?> ft. </p>
-                      </div>
-                    </div>
-                    <div class ="row">
+                <div class="row">
+                  <div class="col">
+                    <p><b>Elevation:</b> <?php echo $mountain["elevation"]; ?> ft. </p>
+                  </div>
+                </div>
+                <div class ="row">
 
-                      <div class="col">
-                        <p><b>Lattitude:</b> <?php echo $mountain["latitude"]; ?></p>
-                      </div>
-                    </div>
+                  <div class="col">
+                    <p><b>Lattitude:</b> <?php echo $mountain["latitude"]; ?></p>
+                  </div>
+                </div>
 
-                    <div class ="row">
+                <div class ="row">
 
-                      <div class="col">
-                        <p><b>Longitude:</b> <?php echo $mountain["longitude"]; ?></p>
-                      </div>
-                    </div>
+                  <div class="col">
+                    <p><b>Longitude:</b> <?php echo $mountain["longitude"]; ?></p>
+                  </div>
+                </div>
 
-                    <div class ="card-section-title">
-                    </div>
+                <hr />
 
-                    <!-- Buttons -->
+                  <!-- Buttons -->
                   <div class="d-flex justify-content-end mt-3 py-0">
                     <div class="text-center mx-2">
                       <?php if(!check_login($dbh) || mountain_user($_GET["id"], $_SESSION["user_id"], $dbh)): ?>
