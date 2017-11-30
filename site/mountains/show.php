@@ -105,12 +105,12 @@
                     <div class="text-center mx-2">
                       <?php if(!check_login($dbh) || mountain_user($_GET["id"], $_SESSION["user_id"], $dbh)): ?>
                         <div class="mx-2 mountain-stats-disabled">
-                          <h4 class="my-0 text-center"><i class=" fa fa-check text-white" aria-hidden="true"></i></h4>
+                          <h3 class="my-0 text-center"><i class=" fa fa-check-circle" aria-hidden="true"></i></h3>
                         </div>
                       <?php else: ?>
                         <div class="mx-2 mountain-stats">
                           <a href=<?php echo("climb_mountain.php?id=" . $mountain["id"]); ?>>
-                            <h4 class="my-0 text-center"><i class=" fa fa-check text-white" aria-hidden="true"></i></h4>
+                            <h3 class="my-0 text-center"><i class=" fa fa-check-circle-o" aria-hidden="true"></i></h3>
                           </a>
                         </div>
                       <?php endif; ?>
@@ -128,13 +128,13 @@
                     </div>
                     <div class="text-center mx-2">
                       <?php if(!check_login($dbh) || user_mountain_rating($_GET["id"], $_SESSION["user_id"], $dbh)): ?>
-                        <div class="mx-2 mountain-stats-disabled">
-                          <h4 class="my-0 text-center"><i class="fa fa-thumbs-o-up text-white" aria-hidden="true"></i></h4>
+                        <div class="mx-2 mountain-stats-disabled-heart">
+                          <h4 class="my-0 text-center"><i class="fa fa-heart" aria-hidden="true"></i></h4>
                         </div>
                       <?php else: ?>
-                        <div class="mx-2 mountain-stats">
+                        <div class="mx-2 mountain-stats-heart">
                           <a href=<?php echo("like_mountain.php?id=" . $mountain["id"]); ?>>
-                            <h4 class="my-0 text-center"><i class="fa fa-thumbs-o-up text-white" aria-hidden="true"></i></h4>
+                            <h4 class="my-0 text-center"><i class="fa fa-heart-o" aria-hidden="true"></i></h4>
                           </a>
                         </div>
                       <?php endif; ?>
@@ -169,7 +169,7 @@
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
                       <div class="modal-header text-center">
-                        <h4 class="modal-title w-100 font-bold">New Comment</h4>
+                        <h4 class="h4-responsive modal-title w-100 font-bold"><?php echo "Comment on " . $mountain["name"]; ?></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -183,7 +183,7 @@
                           </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                          <input type="button" value="Create" class="btn btn-primary" onclick="this.form.submit();" />
+                          <input type="button" value="Post" class="btn btn-primary" onclick="this.form.submit();" />
                         </div>
                       </form>
                     </div>

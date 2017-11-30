@@ -170,7 +170,7 @@ html, body, .background, .background2, .background-white{
 }
 
 .mountain-stats {
-  background-color: #4285F4;
+  color: #4285F4;
   padding-top: 8px;
   width: 42px;
   height: 42px;
@@ -179,7 +179,7 @@ html, body, .background, .background2, .background-white{
 }
 
 .mountain-stats-disabled {
-  background-color: #4285F4;
+  color: #4285F4;
   padding-top: 8px;
   width: 42px;
   height: 42px;
@@ -187,8 +187,26 @@ html, body, .background, .background2, .background-white{
   border-radius: 50%;
 }
 
-.mountain-stats:hover {
-  background-color: #0d47a1;
+.mountain-stats-heart {
+  color: #4285F4;
+  padding-top: 8px;
+  width: 42px;
+  height: 42px;
+  margin-right: 32px;
+  border-radius: 50%;
+}
+
+.mountain-stats-disabled-heart {
+  color: #ff4848;
+  padding-top: 8px;
+  width: 42px;
+  height: 42px;
+  margin-right: 32px;
+  border-radius: 50%;
+}
+
+.mountain-stats:hover, .mountain-stats-heart:hover {
+  color: #0d47a1;
 }
 
 .comments-button{

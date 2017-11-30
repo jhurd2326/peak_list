@@ -69,27 +69,29 @@
                   <br />
 
                   <?php foreach($curr_users as $user) { ?>
-                    <a href=<?php echo ("show.php?id=" . $user["id"]); ?>>
-                      <div class="row list-item u-hover--grey">
-                        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                          <?php echo $user["username"]; ?>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                          <?php echo $user["first_name"] . " " . $user["last_name"]; ?>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                          <?php
-                            $climbs = find_climb_count($user["id"], $dbh);
-                            if($climbs == 1)
-                              $climbs = $climbs . " climb";
-                            else
-                              $climbs = $climbs . " climbs";
+                    <?php if ($user["username"] != "admin") {?>
+                      <a href=<?php echo ("show.php?id=" . $user["id"]); ?>>
+                        <div class="row list-item">
+                          <div class="col-lg-4 col-md-4 col-sm-12 text-center custom-link">
+                            <?php echo $user["username"]; ?>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+                            <?php echo $user["first_name"] . " " . $user["last_name"]; ?>
+                          </div>
+                          <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+                            <?php
+                              $climbs = find_climb_count($user["id"], $dbh);
+                              if($climbs == 1)
+                                $climbs = $climbs . " climb";
+                              else
+                                $climbs = $climbs . " climbs";
 
-                            echo $climbs;
-                          ?>
+                              echo $climbs;
+                            ?>
+                          </div>
                         </div>
-                      </div>
-                    </a>
+                      </a>
+                    <?php } ?>
                   <?php } ?>
 
                   <div class="text-center">

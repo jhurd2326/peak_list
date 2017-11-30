@@ -92,20 +92,24 @@
                 <?php if(check_login($dbh) && ($_SESSION["user_id"] == $user["id"] || check_admin($_SESSION["user_id"], $dbh)) ): ?>
                     <a href=<?php echo("/users/edit.php?id=" . $user["id"]); ?> class="custom-link"><b>Edit</b></a>
                   <?php endif; ?>
-                  <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) ): ?>
+                  <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) && $user["id"] != $_SESSION["user_id"]): ?>
                     |
                     <a href="#" class="custom-link"><b>Delete</b></a>
                   <?php endif; ?>
               </div>
             </div>
+            <hr>
             <div class="row">
-              <div class="col">
-              <hr><h3 class ="h3-responsive"><b>Biography</b></h3><hr>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elementum eu erat vitae fringilla. Aenean vitae pulvinar metus. Donec fringilla arcu id sapien rhoncus eleifend. Pellentesque nisi neque, pretium sed interdum sed, efficitur ac libero. Sed eu felis ultrices, aliquet diam id, posuere ex. Donec nec gravida magna, sed fringilla libero. Phasellus et eleifend arcu, vel rutrum neque.
+              <div class="col-8">
+                <h3 class ="h3-responsive"><b>Biography</b></h3>
+              </div>
+              <div class="col-4 text-right">
+                <a href="#" class = "custom-link"><b>Edit</b></a>
+              </div>
+            </div><hr>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elementum eu erat vitae fringilla. Aenean vitae pulvinar metus. Donec fringilla arcu id sapien rhoncus eleifend. Pellentesque nisi neque, pretium sed interdum sed, efficitur ac libero. Sed eu felis ultrices, aliquet diam id, posuere ex. Donec nec gravida magna, sed fringilla libero. Phasellus et eleifend arcu, vel rutrum neque.
 
-              </p>
-            </div>
-            </div>
+            </p>
           </div>
           <div class = "col-sm-12  col-md-6 col-lg-6">
             <div class = "row">
