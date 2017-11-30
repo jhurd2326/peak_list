@@ -10,6 +10,8 @@
     <link rel="icon" href="/myfavicon.ico"/>
     <link rel="stylesheet" href="stylesheets/custom.css" />
     <link rel="stylesheet" href="stylesheets/hover.css" />
+    <meta name="google" content="notranslate" />
+
 
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
       <script>

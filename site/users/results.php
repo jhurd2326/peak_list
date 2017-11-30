@@ -24,6 +24,8 @@
   <head>
     <title>Search Users</title>
     <link rel="icon" href="/myfavicon.ico"/>
+    <meta name="google" content="notranslate" />
+
 
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
       <script>
