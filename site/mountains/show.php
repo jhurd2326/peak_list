@@ -69,7 +69,7 @@
                     <?php endif; ?>
                     <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) ): ?>
                       |
-                      <a href="#" class="custom-link"><b>Delete</b></a>
+                      <a href=<?php echo("delete.php?id=" . $mountain["id"]); ?> class="custom-link"><b>Delete</b></a>
                     <?php endif; ?>
                   </div>
                 </div>

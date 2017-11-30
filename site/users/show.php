@@ -94,15 +94,14 @@
                 <?php endif; ?>
                 <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) ): ?>
                   |
-                  <a href="#" class="custom-link"><b>Delete</b></a>
+                  <a href=<?php echo("delete.php?id=" . $user["id"]); ?> class="custom-link"><b>Delete</b></a>
                 <?php endif; ?>
               </div>
             </div>
             <div class="row">
               <div class="col">
               <hr><h3 class ="h3-responsive"><b>Biography</b></h3><hr>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elementum eu erat vitae fringilla. Aenean vitae pulvinar metus. Donec fringilla arcu id sapien rhoncus eleifend. Pellentesque nisi neque, pretium sed interdum sed, efficitur ac libero. Sed eu felis ultrices, aliquet diam id, posuere ex. Donec nec gravida magna, sed fringilla libero. Phasellus et eleifend arcu, vel rutrum neque.
-
+                <!-- Add bio here -->
               </p>
             </div>
             </div>
