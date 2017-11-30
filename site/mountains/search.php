@@ -58,7 +58,7 @@
         </div>
         <div class="row mt-5">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <form action="results.php?page=1" method="post" name="mountain_search_form">
+                <form action="results.php?page=1" method="post" name="mountain_search_form" id="mountain_search_form">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="md-form">
@@ -125,7 +125,7 @@
                   </div>
 
                   <div class="text-center my-3">
-                    <input type="button" value="Search" onclick="this.form.submit();" class="btn btn-primary"/>
+                    <input type="button" value="Search" onclick="mountain_search_form.submit();" class="btn btn-primary"/>
                   </div>
 
                 </form>
