@@ -92,7 +92,7 @@
     {
       $password = hash("sha512", $password);
       $sql = "INSERT INTO users (username, password_hash, first_name, last_name,
-              age, telephone, email, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+              age, telephone, email, address, admin) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
       if($stmt = $dbh -> prepare($sql))
       {
@@ -104,6 +104,7 @@
         $stmt -> bindValue(6, $phone);
         $stmt -> bindValue(7, $email);
         $stmt -> bindValue(8, $address);
+        $stmt -> bindValue(9, 0);
         $stmt -> execute();
         return true;
       }
@@ -263,6 +264,24 @@
     else { return 0; }
   }
 
+  /*** Return the number of mountains that the user has climbined ***/
+  function find_climb_count($user_id, $dbh)
+  {
+    $sql = "SELECT COUNT(*) FROM mountain_users WHERE user_id = :id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $user_id);
+      if($query -> execute())
+      {
+        $result = $query -> fetch();
+        return $result[0];
+      }
+      else
+        return 0;
+    }
+    else { return 0; }
+  }
+
   /*** Find user based on id ***/
   function find_user($id, $dbh)
   {
@@ -278,6 +297,35 @@
           return array();
       }
       else { return array(); }
+    }
+    else { return array(); }
+  }
+
+  /*** Determines if a user has admin privileges ***/
+  function check_admin($id, $dbh)
+  {
+    $user = find_user($id, $dbh);
+    if($user["admin"] == true)
+      return true;
+    else
+      return false;
+  }
+
+  /*** Search the database of users based off username and first/last name ***/
+  function search_users($name, $dbh)
+  {
+    $sql = "SELECT * FROM users WHERE username LIKE ? OR first_name
+            LIKE ? OR last_name LIKE ?";
+
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(1, ($name . "%"));
+      $query -> bindValue(2, ($name . "%"));
+      $query -> bindValue(3, ($name . "%"));
+      if($query -> execute())
+        return $query -> fetchAll();
+      else
+        return array();
     }
     else { return array(); }
   }

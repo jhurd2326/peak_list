@@ -2,11 +2,8 @@
   include_once "../php/db_connect.php";
   include_once "../php/functions.php";
 
-  if(!isset($_SESSION["mountains"]))
-  {
-    $_SESSION["mountains"] = search_mountains(array($_POST["name"], $_POST["state"], $_POST["country"],
-      $_POST["latitude"], $_POST["longitude"], $_POST["max_elevation"], $_POST["min_elevation"]), $dbh);
-  }
+  if(!isset($_SESSION["user_results"]))
+    $_SESSION["user_results"] = search_users($_POST["username_name"], $dbh);
 
   $page_number = 0;
   $limit = 10;
@@ -16,13 +13,13 @@
   else
     header("Location: results.php?page=1");
 
-  $curr_mountains = array_slice($_SESSION["mountains"], $limit * ($page_number-1), $limit);
+  $curr_users = array_slice($_SESSION["user_results"], $limit * ($page_number-1), $limit);
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Search</title>
+    <title>Search Users</title>
     <link rel="icon" href="/myfavicon.ico"/>
 
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
@@ -47,7 +44,7 @@
     <div id= "nav-placeholder"></div>
 
     <div class="background animated fadeIn">
-      <div class="container py-5 ">
+      <div class="container py-5 h-100">
         <?php
           if(isset($_GET["error"]))
           {
@@ -58,33 +55,42 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card animated fadeIn">
               <div class="card-header primary-color text-center">
-                <h2 class="h2-responsive" style="color: white;">Mountains</h2>
+                <h2 class="h2-responsive" style="color: white;">Users</h2>
               </div>
               <div class="card-body">
                 <a href="search.php" class="custon-link"> << Return to Search</a>
                 <br />
-                <?php if(empty($curr_mountains)): ?>
-                  <h2 class="text-center">No Mountains Found</h2>
+                <?php if(empty($curr_users)): ?>
+                  <h2 class="text-center">No Users Found</h2>
                 <?php else: ?>
                   <br />
 
-                    <?php foreach($curr_mountains as $mountain) { ?>
-                      <a href=<?php echo ("show.php?id=" . $mountain["id"]); ?>>
-                        <div class="row list-item u-hover--grey">
-                          <div class="col-lg-4 col-md-4 col-sm-12 text-center custom-link">
-                            <?php echo $mountain["name"]; ?>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                            <?php echo $mountain["state"]; ?>
-                          </div>
-                          <div class="col-lg-4 col-md-4 col-sm-12 text-center">
-                            <?php echo $mountain["country"]; ?>
-                          </div>
+                  <?php foreach($curr_users as $user) { ?>
+                    <a href=<?php echo ("show.php?id=" . $user["id"]); ?>>
+                      <div class="row list-item u-hover--grey">
+                        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+                          <?php echo $user["username"]; ?>
                         </div>
-                      </a>
-                    <?php } ?>
+                        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+                          <?php echo $user["first_name"] . " " . $user["last_name"]; ?>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+                          <?php
+                            $climbs = find_climb_count($user["id"], $dbh);
+                            if($climbs == 1)
+                              $climbs = $climbs . " climb";
+                            else
+                              $climbs = $climbs . " climbs";
+
+                            echo $climbs;
+                          ?>
+                        </div>
+                      </div>
+                    </a>
+                  <?php } ?>
+
                   <div class="text-center">
-                    <?php display_pagination($_SESSION["mountains"], $page_number, $limit); ?>
+                    <?php display_pagination($_SESSION["user_results"], $page_number, $limit); ?>
                   </div>
                 <?php endif; ?>
               </div>
