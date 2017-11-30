@@ -41,9 +41,20 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                     <div class="dropdown-content dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="../dashboard.php">My Account</a>
-                        <a class="dropdown-item" href="../index.php">Login</a>
+                      <?php if(check_login($dbh)): ?>
+                        <a class="dropdown-item" href="/dashboard.php">My Dashboard</a>
+                      <?php endif; ?>
+                      <?php if(check_login($dbh)): ?>
+                        <a class="dropdown-item" href= <?php echo "/users/show.php?id=" . $_SESSION["user_id"];?>>
+                          My Account
+                        </a>
+                      <?php endif; ?>
+                      <?php if(!check_login($dbh)): ?>
+                        <a class="dropdown-item" href="/index.php">Login</a>
+                      <?php endif; ?>
+                      <?php if(check_login($dbh)): ?>
                         <a class="dropdown-item" href="/php/logout.php">Logout</a>
+                      <?php endif; ?>
                     </div>
                 </li>
 

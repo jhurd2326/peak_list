@@ -205,6 +205,26 @@
     else { return array(); }
   }
 
+  /*** Returns the users mountain information for show.php***/
+  function recent_climbs($user_id, $dbh){
+    $sql = "SELECT id, name, created_at FROM mountain_users INNER JOIN mountains
+     ON mountain_users.mountain_id = mountains.id WHERE mountain_users.user_id
+     = :user_id ORDER BY created_at DESC LIMIT 5";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":user_id", $user_id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
   /*** Return the mountains in order of most climbs ***/
   function find_most_popular_mountains($dbh)
   {
@@ -268,6 +288,60 @@
   function find_climb_count($user_id, $dbh)
   {
     $sql = "SELECT COUNT(*) FROM mountain_users WHERE user_id = :id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $user_id);
+      if($query -> execute())
+      {
+        $result = $query -> fetch();
+        return $result[0];
+      }
+      else
+        return 0;
+    }
+    else { return 0; }
+  }
+
+  /*** Return the number of mountains that the user has liked ***/
+  function find_like_count($user_id, $dbh)
+  {
+    $sql = "SELECT COUNT(*) FROM mountain_ratings WHERE user_id = :id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $user_id);
+      if($query -> execute())
+      {
+        $result = $query -> fetch();
+        return $result[0];
+      }
+      else
+        return 0;
+    }
+    else { return 0; }
+  }
+
+  /*** Return the number of followers that have followed the user ***/
+  function find_follower_count($user_id, $dbh)
+  {
+    $sql = "SELECT COUNT(*) FROM relationships WHERE followed_id = :id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $user_id);
+      if($query -> execute())
+      {
+        $result = $query -> fetch();
+        return $result[0];
+      }
+      else
+        return 0;
+    }
+    else { return 0; }
+  }
+
+  /*** Return the number of users that the user follows ***/
+  function find_following_count($user_id, $dbh)
+  {
+    $sql = "SELECT COUNT(*) FROM relationships WHERE follower_id = :id";
     if($query = $dbh -> prepare($sql))
     {
       $query -> bindValue(":id", $user_id);
