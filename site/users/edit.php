@@ -70,37 +70,37 @@
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="text" name="first_name" id="first_name" class="form-control" value='<?php echo $user["first_name"]; ?>'>
+                      <input type="text" name="first_name" id="first_name" class="form-control" value="<?php echo $user["first_name"]; ?>">
                       <label for="first_name">First Name</label>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="text" name="last_name" id="last_name" class="form-control" value='<?php echo $user["last_name"]; ?>'>
+                      <input type="text" name="last_name" id="last_name" class="form-control" value="<?php echo $user["last_name"]; ?>">
                       <label for="last_name">Last Name</label>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="text" name="email" id="email" class="form-control" value='<?php echo $user["email"]; ?>'>
+                      <input type="text" name="email" id="email" class="form-control" value="<?php echo $user["email"]; ?>">
                       <label for="email">Email</label>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="number" name="age" id="age" class="form-control" value='<?php echo $user["age"]; ?>'>
+                      <input type="number" name="age" id="age" class="form-control" value="<?php echo $user["age"]; ?>">
                       <label for="age">Age</label>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="text" name="phone" id="phone" class="form-control" value='<?php echo $user["telephone"]; ?>'>
+                      <input type="text" name="phone" id="phone" class="form-control" value="<?php echo $user["telephone"]; ?>">
                       <label for="phone">Telephone</label>
                     </div>
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="md-form">
-                      <input type="text" name="address" id="address" class="form-control" value='<?php echo $user["address"]; ?>'>
+                      <input type="text" name="address" id="address" class="form-control" value="<?php echo $user["address"]; ?>">
                       <label for="address">Address</label>
                     </div>
                   </div>
