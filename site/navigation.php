@@ -27,16 +27,20 @@
                     <a class="nav-link" href="/index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/mountains/search.php">Search</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/about.php">About</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>
+                    <div class=" dropdown-primary dropdown-content" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/mountains/search.php">Mountains</a>
+                        <a class="dropdown-item" href="/users/search.php">Users</a>
+                    </div>
                 </li>
 
                 <!-- Dropdown -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
-                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <div class="dropdown-content dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="../dashboard.php">My Account</a>
                         <a class="dropdown-item" href="../index.php">Login</a>
                         <a class="dropdown-item" href="/php/logout.php">Logout</a>

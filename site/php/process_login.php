@@ -9,7 +9,7 @@
 
     if(login($username, $password, $dbh) == true)
     {
-      header("Location: /mountains/search.php");
+      header("Location: /dashboard.php");
     }
     else
     {
