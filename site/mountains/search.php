@@ -27,15 +27,6 @@
       });
     </script>
 
-    <script>
-        document.onkeydown=function(evt){
-            var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
-            if(keyCode == 13)
-            {
-                document.mountain_search_form.submit();
-            }
-        }
-    </script>
     <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
     <link rel="stylesheet" href="../stylesheets/custom.css" />
   </head>

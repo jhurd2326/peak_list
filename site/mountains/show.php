@@ -2,12 +2,16 @@
   include_once "../php/db_connect.php";
   include_once "../php/functions.php";
 
-  if(isset($_GET["id"]))
+  if(isset($_GET["id"])){
     $mountain = find_mountain($_GET["id"], $dbh);
-  else
-    $mountain = array();
+    $comments = find_mountain_comments($_GET["id"], $dbh);
 
-  $comments = find_mountain_comments($mountain["id"], $dbh);
+  }
+  else{
+    $mountain = array();
+    $comments = array();
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +33,14 @@
       });
     </script>
 
-    <title><?php echo $mountain["name"], " | RangeFinder"; ?></title>
+    <title>
+      <?php
+        if(!empty($mountain))
+          echo $mountain["name"], " | RangeFinder";
+        else
+          echo "RangeFinder";
+      ?>
+   </title>
 
     <link rel="stylesheet" href="../stylesheets/custom.css" />
     <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
@@ -48,7 +59,7 @@
         <div class="form-group">
             &nbsp;
         </div>
-        <?php if(isset($_SESSION["mountain_page"])): ?>
+        <?php if(isset($_SESSION["mountain_page"]) && isset($_SERVER["HTTP_REFERER"]) && strpos($_SERVER["HTTP_REFERER"], "results") !== false): ?>
           <div class="row">
             <div class="col">
               <a class="custom-link mb-3" href=<?php echo "results.php?page=" . $_SESSION["mountain_page"]; ?>>
@@ -60,7 +71,11 @@
         <div class="row">
           <div class = "col-lg-6 col-md-12 mb-4">
             <?php if(empty($mountain)): ?>
-                <h2 class="text-center">No Mountain Found</h2>
+              <div class = "row flex-center" style="height: 80vh !important;">
+                <div class ="col">
+                  <h2 class="text-center">No Mountain Found</h2>
+                </div>
+              </div>
             <?php else: ?>
               <?php display_google_map($mountain["latitude"], $mountain["longitude"]); ?>
           </div>
