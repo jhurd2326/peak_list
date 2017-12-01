@@ -4,7 +4,6 @@
 
   if(!isset($_SESSION["mountains"]))
   {
-
     $_SESSION["mountains"] = search_mountains(array($_POST["name"], $_POST["state"], $_POST["country"],
       $_POST["latitude"], $_POST["longitude"], $_POST["max_elevation"], $_POST["min_elevation"]), $dbh);
   }

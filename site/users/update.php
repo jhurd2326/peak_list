@@ -15,12 +15,17 @@
   $address = isset($_POST["address"]) ? $_POST["address"] : $user["address"];
   $biography = isset($_POST["biography"]) ? $_POST["biography"] : $user["biography"];
 
+  if(isset($_POST["admin"]) && $_POST["admin"] == "1")
+    $admin = true;
+  else
+    $admin = false;
+
 
   if(check_login($dbh) && ($_SESSION["user_id"] == $user["id"] || check_admin($_SESSION["user_id"], $dbh)))
   {
     $sql = "UPDATE users SET first_name = :first_name, last_name = :last_name,
-            email = :email, age = :age, telephone = :phone, address = :address, biography = :bio WHERE
-            id = :id";
+            email = :email, age = :age, telephone = :phone, address = :address,
+            biography = :bio, admin = :admin WHERE id = :id";
     if($query = $dbh -> prepare($sql))
     {
       $query -> bindValue(":first_name", $first_name);
@@ -31,6 +36,7 @@
       $query -> bindValue(":address", $address);
       $query -> bindValue(":id", $user["id"]);
       $query -> bindValue(":bio", $biography);
+      $query -> bindValue(":admin", $admin);
 
       if($query -> execute())
         header("Location: show.php?id=" . $user["id"]);

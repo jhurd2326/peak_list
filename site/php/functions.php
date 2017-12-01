@@ -120,43 +120,58 @@
   /*** Search the database of mountains given search parameters ***/
   function search_mountains($params, $dbh)
   {
-    $sql = "SELECT * FROM mountains WHERE";
-
-    $attributes = array(":name", ":state", ":country", ":latitude", ":longitude",
-                        ":max_elevation", "min_elevation");
-
-    $query_options = array(" name like :name and", " state = :state and", " country = :country and",
-                           " latitude like :latitude and", " longitude like :longitude and",
-                           " elevation <= :max_elevation and", " elevation >= :min_elevation and");
-
-    if(!empty($params[0]))
-      $params[0] = "%" . $params[0] . "%";
-
-    if(!empty($params[3]))
-      $params[3] .= "%";
-
-    if(!empty($params[4]))
-      $params[4] .= "%";
-
-    foreach($params as $key => $param)
-      if(!empty($param))
-        $sql .= $query_options[$key];
-
-    $stmt = rtrim($sql, "and");
-    if($sql == $stmt) return array();
-
-    if($query = $dbh -> prepare($stmt))
+    if(empty(implode("", $params)))
     {
+      $sql = "SELECT * FROM mountains";
+      if($query = $dbh -> prepare($sql))
+      {
+        if($query -> execute())
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else
+    {
+      $sql = "SELECT * FROM mountains WHERE";
+
+      $attributes = array(":name", ":state", ":country", ":latitude", ":longitude",
+                          ":max_elevation", "min_elevation");
+
+      $query_options = array(" name like :name and", " state = :state and", " country = :country and",
+                             " latitude like :latitude and", " longitude like :longitude and",
+                             " elevation <= :max_elevation and", " elevation >= :min_elevation and");
+
+      if(!empty($params[0]))
+        $params[0] = "%" . $params[0] . "%";
+
+      if(!empty($params[3]))
+        $params[3] .= "%";
+
+      if(!empty($params[4]))
+        $params[4] .= "%";
+
       foreach($params as $key => $param)
         if(!empty($param))
-          $query -> bindValue($attributes[$key], $param);
+          $sql .= $query_options[$key];
 
-      if($query -> execute())
-        return $query -> fetchAll();
-      else
-        return array();
+      $stmt = rtrim($sql, "and");
+      if($sql == $stmt) return array();
+
+      if($query = $dbh -> prepare($stmt))
+      {
+        foreach($params as $key => $param)
+          if(!empty($param))
+            $query -> bindValue($attributes[$key], $param);
+
+        if($query -> execute())
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
     }
-    else { return array(); }
   }
 
   /*** Return the mountains in order of most likes ***/
@@ -388,20 +403,35 @@
   /*** Search the database of users based off username and first/last name ***/
   function search_users($name, $dbh)
   {
-    $sql = "SELECT * FROM users WHERE username LIKE ? OR first_name
-            LIKE ? OR last_name LIKE ?";
-
-    if($query = $dbh -> prepare($sql))
+    if(empty($name[0]))
     {
-      $query -> bindValue(1, ($name . "%"));
-      $query -> bindValue(2, ($name . "%"));
-      $query -> bindValue(3, ($name . "%"));
-      if($query -> execute())
-        return $query -> fetchAll();
-      else
-        return array();
+      $sql = "SELECT * FROM users";
+      if($query = $dbh -> prepare($sql))
+      {
+        if($query -> execute())
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
     }
-    else { return array(); }
+    else
+    {
+      $sql = "SELECT * FROM users WHERE username LIKE ? OR first_name
+              LIKE ? OR last_name LIKE ?";
+
+      if($query = $dbh -> prepare($sql))
+      {
+        $query -> bindValue(1, ($name . "%"));
+        $query -> bindValue(2, ($name . "%"));
+        $query -> bindValue(3, ($name . "%"));
+        if($query -> execute())
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
   }
 
   /*** Get an array of all of the comments linked to a mountain ***/

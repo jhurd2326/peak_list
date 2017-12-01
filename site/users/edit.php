@@ -104,6 +104,26 @@
                       <label for="address">Address</label>
                     </div>
                   </div>
+
+                  <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh)): ?>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <label>Admin Privileges</label>
+                      <div class="col px-0">
+                        <div class="form-check form-check-inline mr-2">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="admin" id="admin_yes" value="1" <?php if(check_admin($user["id"], $dbh)) echo "checked"; ?>>
+                            Yes
+                          </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="admin" id="admin_no" value="0" <?php if(!check_admin($user["id"], $dbh)) echo "checked"; ?>>
+                            No
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  <?php endif; ?>
                 </div>
 
                 <div class="text-center my-3">
