@@ -25,8 +25,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>
                     <div class=" dropdown-primary dropdown-content" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href=<?php echo "mountains/search.php"; ?>>Mountains</a>
-                        <a class="dropdown-item" href=<?php echo "users/search.php"; ?>>Users</a>
+                        <a class="nav-link dropdown-item" href=<?php echo "mountains/search.php"; ?>>Mountains</a>
+                        <a class="nav-link dropdown-item" href=<?php echo "users/search.php"; ?>>Users</a>
                     </div>
                 </li>
 
@@ -35,18 +35,18 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                     <div class="dropdown-content dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                       <?php if(check_login($dbh)): ?>
-                        <a class="dropdown-item" href=<?php echo "dashboard.php"; ?>>My Dashboard</a>
+                        <a class="nav-link dropdown-item" href=<?php echo "dashboard.php"; ?>>My Dashboard</a>
                       <?php endif; ?>
                       <?php if(check_login($dbh)): ?>
-                        <a class="dropdown-item" href= <?php echo "users/show.php?id=" . $_SESSION["user_id"];?>>
+                        <a class="nav-link dropdown-item" href= <?php echo "users/show.php?id=" . $_SESSION["user_id"];?>>
                           My Account
                         </a>
                       <?php endif; ?>
                       <?php if(!check_login($dbh)): ?>
-                        <a class="dropdown-item" href=<?php echo "index.php"; ?>>Login</a>
+                        <a class="nav-link dropdown-item" href=<?php echo "index.php"; ?>>Login</a>
                       <?php endif; ?>
                       <?php if(check_login($dbh)): ?>
-                        <a class="dropdown-item" href=<?php echo "php/logout.php"; ?>>Logout</a>
+                        <a class="nav-link dropdown-item" href=<?php echo "php/logout.php"; ?>>Logout</a>
                       <?php endif; ?>
                     </div>
                 </li>
@@ -55,7 +55,7 @@
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
                     <div class="dropdown-content dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="nav-link" href=<?php echo "admin/perform_backup.php"; ?>>DB Backup</a>
+                      <a class="nav-link dropdown-item" href=<?php echo "admin/perform_backup.php"; ?>>DB Backup</a>
                     </div>
                   </li>
                 <?php endif; ?>

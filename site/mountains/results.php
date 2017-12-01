@@ -32,14 +32,14 @@
     <meta name="google" content="notranslate" />
 
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("navigation.php", function(data){
           $("#nav-placeholder").replaceWith(data);
       });
     </script>
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("../footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
