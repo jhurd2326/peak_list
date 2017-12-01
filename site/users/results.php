@@ -23,18 +23,18 @@
 <html>
   <head>
     <title>Search Users</title>
-    <link rel="icon" href="/myfavicon.ico"/>
+    <link rel="icon" href="../myfavicon.ico"/>
     <meta name="google" content="notranslate" />
 
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("../navigation.php", function(data){
           $("#nav-placeholder").replaceWith(data);
       });
     </script>
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("../footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
@@ -63,7 +63,7 @@
                 <h2 class="h2-responsive" style="color: white;">Users</h2>
               </div>
               <div class="card-body">
-                <a href="search.php" class="custon-link"> << Return to Search</a>
+                <a href="search.php" class="custom-link"> << Return to Search</a>
                 <br />
                 <?php if(empty($curr_users)): ?>
                   <h2 class="text-center">No Users Found</h2>

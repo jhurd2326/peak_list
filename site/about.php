@@ -7,20 +7,20 @@
 <html>
   <head>
     <title>About</title>
-    <link rel="icon" href="/myfavicon.ico"/>
+    <link rel="icon" href="myfavicon.ico"/>
     <link rel="stylesheet" href="stylesheets/custom.css" />
     <link rel="stylesheet" href="stylesheets/hover.css" />
     <meta name="google" content="notranslate" />
 
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("navigation.php", function(data){
           $("#nav-placeholder").replaceWith(data);
       });
     </script>
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
@@ -61,8 +61,8 @@
             <div class = "row">
                 <div class = "card">
                   <div class="view overlay hm-white-slight">
-                      <img src="/img/about-page-screen.png" class="img-fluid" alt="">
-                      <a href="/index.php">
+                      <img src="img/about-page-screen.png" class="img-fluid" alt="">
+                      <a href="index.php">
                           <div class="mask"></div>
                       </a>
 
@@ -73,8 +73,8 @@
             <div class = "row mt-5">
                 <div class = "card">
                   <div class="view overlay hm-white-slight">
-                    <img src="/img/about-2.png" class="img-fluid" alt="">
-                    <a href="/mountains/search.php">
+                    <img src="img/about-2.png" class="img-fluid" alt="">
+                    <a href="mountains/search.php">
                         <div class="mask"></div>
                     </a>
                   </div>
@@ -83,8 +83,8 @@
             <div class = "row mt-5">
                 <div class = "card">
                   <div class="view overlay hm-white-slight">
-                    <img src="/img/about-3.png" class="img-fluid" alt="">
-                    <a href="/mountains/search.php">
+                    <img src="img/about-3.png" class="img-fluid" alt="">
+                    <a href="mountains/search.php">
                         <div class="mask"></div>
                     </a>
                   </div>

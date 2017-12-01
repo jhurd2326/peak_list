@@ -8,17 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Register</title>
     <link rel="stylesheet" href="stylesheets/custom.css"  />
-    <link rel="icon" href="/myfavicon.ico"/>
+    <link rel="icon" href="myfavicon.ico"/>
 
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("navigation.php", function(data){
           $("#nav-placeholder").replaceWith(data);
       });
     </script>
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
@@ -110,7 +110,7 @@
               Follow your friends to display them on your dashboard!
               This also will let you leave comments on mountains for others to see!
             </p>
-            <a class="custom-link" href="/about.php"><br><br>Want to learn more about our site?<br></a>
+            <a class="custom-link" href="about.php"><br><br>Want to learn more about our site?<br></a>
 
             </div>
           </div>

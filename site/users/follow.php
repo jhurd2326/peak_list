@@ -5,7 +5,7 @@
   if(isset($_GET["user"]))
     $user_id = $_GET["user"];
   else
-    header("Location: index.php");
+    header("Location: ../index.php");
 
   if(check_login($dbh))
   {
