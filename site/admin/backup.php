@@ -10,7 +10,7 @@
 
   $files = array_reverse($files);
   $page_number = 0;
-  $limit = 5;
+  $limit = 8;
 
   if(isset($_GET["page"]))
     $page_number = $_GET["page"];
@@ -82,12 +82,19 @@
                     </div>
                   <?php else: ?>
                     <?php foreach($curr_files as $file) { ?>
-                      <a href=<?php echo "../backups/" . $file; ?>>
-                        <div class="row list-item u-hover--grey">
-                          <i class="fa fa-database mr-3" aria-hidden="true"></i>
-                          <b><?php echo $file ?></b>
+                      <div class="row list-item mx-2">
+                        <div class="d-flex col-12 justify-content-between">
+                          <a class="custom-link" href=<?php echo "../backups/" . $file; ?>>
+                            <i class="fa fa-database mr-3" aria-hidden="true"></i>
+                            <b><?php echo $file ?></b>
+                          </a>
+                          <div>
+                            <a href=<?php echo "restore.php?file=" . $file; ?> class="custom-link"><b>Restore</b></a>
+                            <span class="mx-3"></span>
+                            <a href=<?php echo "delete.php?file=" . $file; ?> class="custom-link"><b>Delete</b></a>
+                          </div>
                         </div>
-                      </a>
+                      </div>
                     <?php } ?>
                     <div class="text-center">
                       <?php display_pagination($files, $page_number, $limit); ?>
