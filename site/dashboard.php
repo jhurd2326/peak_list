@@ -12,25 +12,25 @@
 <html>
   <head>
     <title>Dashboard</title>
-    <link rel="icon" href="/myfavicon.ico"/>
+    <link rel="icon" href="myfavicon.ico"/>
     <meta name="google" content="notranslate" />
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
       <script>
-      $.get("../navigation.php", function(data){
+      $.get("navigation.php", function(data){
           $("#nav-placeholder").replaceWith(data);
       });
     </script>
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
       <script>
-      $.get("../footer.php", function(data){
+      $.get("footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
       });
     </script>
 
-    <link rel="stylesheet" href="../stylesheets/custom.css" />
-    <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
+    <link rel="stylesheet" href="stylesheets/custom.css" />
+    <link rel="stylesheet" href="stylesheets/font-awesome.css" />
   </head>
   <body>
     <div id="nav-placeholder"></div>
@@ -161,11 +161,11 @@
 
     </div>
 
-    <script type="text/JavaScript" src="../javascripts/jquery-3.2.1.min.js"></script>
-    <script type="text/JavaScript" src="../javascripts/sha512.js"></script>
-    <script type="text/JavaScript" src="../javascripts/forms.js"></script>
-    <script type="text/JavaScript" src="../javascripts/popper.min.js"></script>
-    <script type="text/JavaScript" src="../javascripts/bootstrap.min.js"></script>
-    <script type="text/JavaScript" src="../javascripts/mdb.min.js"></script>
+    <script type="text/JavaScript" src="javascripts/jquery-3.2.1.min.js"></script>
+    <script type="text/JavaScript" src="javascripts/sha512.js"></script>
+    <script type="text/JavaScript" src="javascripts/forms.js"></script>
+    <script type="text/JavaScript" src="javascripts/popper.min.js"></script>
+    <script type="text/JavaScript" src="javascripts/bootstrap.min.js"></script>
+    <script type="text/JavaScript" src="javascripts/mdb.min.js"></script>
   </body>
 </html>

@@ -15,17 +15,17 @@
 <html>
   <head>
 
-    <link rel="icon" href="/myfavicon.ico"/>
+    <link rel="icon" href="../myfavicon.ico"/>
     <meta name="google" content="notranslate" />
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("../navigation.php", function(data){
           $("#nav-placeholder").replaceWith(data);
       });
     </script>
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("../footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
@@ -69,7 +69,7 @@
               </div>
             <?php else: ?>
               <div>
-                <a href=<?php echo("/users/follow.php?user=" . $user["id"]); ?> class="btn btn-sm btn-primary mx-0"><b>Follow</b></a>
+                <a href=<?php echo("follow.php?user=" . $user["id"]); ?> class="btn btn-sm btn-primary mx-0"><b>Follow</b></a>
               </div>
             <?php endif; ?>
           <?php endif; ?>
@@ -92,7 +92,7 @@
 
               <div class="col-4 text-right">
                 <?php if(check_login($dbh) && ($_SESSION["user_id"] == $user["id"] || check_admin($_SESSION["user_id"], $dbh)) ): ?>
-                  <a href=<?php echo("/users/edit.php?id=" . $user["id"]); ?> class="custom-link"><b>Edit</b></a>
+                  <a href=<?php echo("edit.php?id=" . $user["id"]); ?> class="custom-link"><b>Edit</b></a>
                 <?php endif; ?>
                 <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) ): ?>
                   |
@@ -188,7 +188,7 @@
                       <?php foreach($recent as $mountain) { ?>
                         <div class="row list-item">
                           <div class="col-6 text-center">
-                            <a class="custom-link" href=<?php echo "/mountains/show.php?id=" . $mountain["id"];?>>
+                            <a class="custom-link" href=<?php echo "../mountains/show.php?id=" . $mountain["id"];?>>
                               <?php echo $mountain["name"]; ?>
                             </a>
                           </div>

@@ -7,19 +7,19 @@
 <html>
   <head>
     <title>Login</title>
-    <link rel="icon" href="/myfavicon.ico"/>
+    <link rel="icon" href="myfavicon.ico"/>
     <link rel="stylesheet" href="stylesheets/custom.css" />
     <link rel="stylesheet" href="stylesheets/hover.css" />
     <meta name="google" content="notranslate" />
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("navigation.php", function(data){
           $("#nav-placeholder").replaceWith(data);
       });
     </script>
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
@@ -79,8 +79,8 @@
             <div class="container h-100">
               <div class = "d-flex row flex-center">
                 <div class = "col-12 text-center mt-5 animated slideInUp">
-                  <form action="/mountains/search.php" method="get">
-                    <input type="submit" value="Search Mountain Database" onclick="/mountains/search.php" class="btn btn-primary mt-5"/>
+                  <form action="mountains/search.php" method="get">
+                    <input type="submit" value="Search Mountain Database" onclick="mountains/search.php" class="btn btn-primary mt-5"/>
                   </form>
                 </div>
               </div>
