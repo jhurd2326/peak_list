@@ -47,14 +47,14 @@
                 <?php else: ?>
                   <br />
 
-                  <ul class="search-list">
+                  <ul>
                     <?php foreach($curr_likes as $like) { ?>
                       <div class="list-item text-left">
                         <div class="d-flex row mx-0">
                           <div class="d-flex col-12 justify-content-between">
                             <span>
-                              <i class="mx-2 fa fa-user-circle-o" aria-hidden="true" style="font-size: 150%"></i>
-                              <a class = "custom-link" href=<?php echo "../users/show.php?id=" . $like["id"];?>>
+                              <a class = "custom-link mb-1 mr-2" href=<?php echo "../users/show.php?id=" . $like["id"];?>>
+                                <i class="mx-2 fa fa-user-circle-o" aria-hidden="true" style="font-size: 150%"></i>
                                 <b><?php echo ($like["username"]); ?></b>
                               </a>
                               <small><?php echo (" liked it " . time_elapsed_string($like["created_at"])); ?></small>
@@ -76,7 +76,9 @@
                     <?php } ?>
                   </ul>
                   <div class="text-center">
-                    <?php display_pagination($likes, $page_number, $limit); ?>
+                    <?php
+                      $url = "likes.php?mountain=" . $mountain_id . "&page=" . $page_number;
+                      display_pagination($likes, $page_number, $limit, $url); ?>
                   </div>
                 <?php endif; ?>
               </div>

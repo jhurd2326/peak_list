@@ -76,7 +76,9 @@
                     <?php } ?>
                   </ul>
                   <div class="text-center">
-                    <?php display_pagination($users, $page_number, $limit); ?>
+                    <?php
+                      $url = "climbers.php?mountain=" . $mountain_id . "&page=" . $page_number;
+                      display_pagination($users, $page_number, $limit, $url); ?>
                   </div>
                 <?php endif; ?>
               </div>

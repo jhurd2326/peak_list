@@ -13,7 +13,10 @@
   $limit = 10;
 
   if(isset($_GET["page"]))
+  {
     $page_number = $_GET["page"];
+    $_SESSION["mountain_page"] = $page_number;
+  }
   else
     header("Location: results.php?page=1");
 
@@ -64,7 +67,7 @@
                 <h2 class="h2-responsive" style="color: white;">Mountains</h2>
               </div>
               <div class="card-body">
-                <a href="search.php" class="custon-link"> << Return to Search</a>
+                <a href="search.php" class="custom-link"> << Return to Search</a>
                 <br />
                 <?php if(empty($curr_mountains)): ?>
                   <h2 class="text-center">No Mountains Found</h2>
@@ -87,7 +90,10 @@
                       </a>
                     <?php } ?>
                   <div class="text-center">
-                    <?php display_pagination($_SESSION["mountains"], $page_number, $limit); ?>
+                    <?php
+                      $url = "results.php?page=" . $page_number;
+                      display_pagination($_SESSION["mountains"], $page_number, $limit, $url);
+                    ?>
                   </div>
                 <?php endif; ?>
               </div>

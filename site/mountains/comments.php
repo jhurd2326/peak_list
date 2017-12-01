@@ -23,8 +23,8 @@
     <link rel="stylesheet" href="../stylesheets/custom.css" />
   </head>
   <body>
-    <div class="background">
-      <div class="container h-100">
+    <div class="background animated fadeIn">
+      <div class="container my-5">
         <?php
           if(isset($_GET["error"]))
           {
@@ -45,7 +45,7 @@
                 <?php else: ?>
                   <br />
 
-                  <ul class="search-list">
+                  <ul>
                     <?php foreach($curr_comments as $comment) { ?>
                       <div class="list-item text-left">
                         <div class="px-2">
@@ -59,7 +59,10 @@
                     <?php } ?>
                   </ul>
                   <div class="text-center">
-                    <?php display_pagination($comments, $page_number, $limit); ?>
+                    <?php
+                      $url = "comments.php?mountain=" . $mountain_id . "&page=" . $page_number;
+                      display_pagination($comments, $page_number, $limit, $url);
+                    ?>
                   </div>
                 <?php endif; ?>
               </div>

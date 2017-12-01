@@ -97,7 +97,10 @@
                       </div>
                     <?php } ?>
                     <div class="text-center">
-                      <?php display_pagination($files, $page_number, $limit); ?>
+                      <?php
+                        $url = "backup.php?page=" . $page_number;
+                        display_pagination($files, $page_number, $limit, $url);
+                      ?>
                     </div>
                   <?php endif; ?>
                 </div>

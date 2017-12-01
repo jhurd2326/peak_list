@@ -48,6 +48,15 @@
         <div class="form-group">
             &nbsp;
         </div>
+        <?php if(isset($_SESSION["mountain_page"])): ?>
+          <div class="row">
+            <div class="col">
+              <a class="custom-link mb-3" href=<?php echo "results.php?page=" . $_SESSION["mountain_page"]; ?>>
+                << Back To Results
+              </a>
+            </div>
+          </div>
+        <?php endif; ?>
         <div class="row">
           <div class = "col-lg-6 col-md-12 mb-4">
             <?php if(empty($mountain)): ?>
@@ -207,9 +216,12 @@
 
             <!--  Link to view all comments if there are more than 5 comments  -->
             <?php if(count($comments) > 5): ?>
-              <?php $comments = array_slice($comments, 0, 5); ?>
+              <?php
+                $comment_count = count($comments);
+                $comments = array_slice($comments, 0, 5);
+              ?>
               <div class="d-flex justify-content-end">
-                <a class="custom-link my-2 comments-button" href=<?php echo("comments.php?page=1&mountain=" . $mountain["id"]); ?>> View all  <?php echo (" " . count($comments) . " comments "); ?>>> </a>
+                <a class="custom-link my-2 comments-button" href=<?php echo("comments.php?page=1&mountain=" . $mountain["id"]); ?>> View all  <?php echo (" " . $comment_count . " comments "); ?>>> </a>
               </div>
             <?php endif; ?>
 

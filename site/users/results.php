@@ -97,7 +97,10 @@
                   <?php } ?>
 
                   <div class="text-center">
-                    <?php display_pagination($_SESSION["user_results"], $page_number, $limit); ?>
+                    <?php
+                      $url = "results.php?page=" . $page_number;
+                      display_pagination($_SESSION["user_results"], $page_number, $limit, $url);
+                    ?>
                   </div>
                 <?php endif; ?>
               </div>

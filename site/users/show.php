@@ -51,6 +51,15 @@
         <div class="form-group">
             &nbsp;
         </div>
+        <?php if(isset($_SESSION["user_page"])): ?>
+          <div class="row">
+            <div class="col">
+              <a class="custom-link mb-3" href=<?php echo "results.php?page=" . $_SESSION["user_page"]; ?>>
+                << Back To Results
+              </a>
+            </div>
+          </div>
+        <?php endif; ?>
         <div class="row">
           <div class="col">
                 <h2 class="h2-responsive mb-4" style="color: Black;"><strong>
