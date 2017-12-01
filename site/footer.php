@@ -1,10 +1,3 @@
-<?php
-
-  $base_addr = "/~bharget";
-  include_once "{$base_addr}/php/db_connect.php";
-  include_once "{$base_addr}/php/functions.php";
-?>
-
 <footer class="page-footer blue center-on-small-only unique-color-dark pt-0 mt-0">
 
 
