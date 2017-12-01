@@ -106,18 +106,29 @@
                 <h3 class ="h3-responsive"><b>Biography</b></h3>
               </div>
               <div class="col-4 text-right">
-                <?php if(check_login($dbh) && ($_SESSION["user_id"] == $user["id"] || check_admin($_SESSION["user_id"], $dbh)) ): ?>
-                  <a href=<?php echo "edit_biography.php?id=" . $user["id"];?> class = "custom-link"><b>Edit</b></a>
-                <?php endif; ?>
+
               </div>
             </div>
             <hr>
-
-            <div class="row">
-              <div class="col">
-                <p><?php echo $user["biography"];?></p>
+            <div class ="row">
+              <div class ="col-12">
+              <form action=<?php echo "update.php?id=" . $user["id"];?> method="post" name="bio_edit" id="bio_edit">
+                <div class="md-form">
+                  <textarea type="text" name="biography" id="biography" class="md-textarea"><?php echo $user['biography'];?></textarea>
+                  <label for="biography">Type Here...</label>
+                </div>
+              </form>
+            </div>
+            </div>
+            <div class ="row">
+              <div class="col text-center">
+                <a class="btn btn-md btn-primary" onclick="bio_edit.submit();">
+                  <i class="fa fa-floppy-o mr-2" aria-hidden="true"></i>
+                  Save
+                </a>
               </div>
             </div>
+
           </div>
           <div class = "col-sm-12  col-md-6 col-lg-6">
             <div class = "row">
