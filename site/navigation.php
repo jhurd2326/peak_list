@@ -61,6 +61,15 @@
                     </div>
                 </li>
 
+                <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh)): ?>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
+                    <div class="dropdown-content dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="nav-link" href="/admin/backup.php?page=1">DB Backups</a>
+                    </div>
+                  </li>
+                <?php endif; ?>
+
             </ul>
 
             <form class="form-inline">
