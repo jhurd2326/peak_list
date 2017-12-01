@@ -22,7 +22,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Search Users</title>
+    <title>User Search | RangeFinder</title>
     <link rel="icon" href="../myfavicon.ico"/>
     <meta name="google" content="notranslate" />
 

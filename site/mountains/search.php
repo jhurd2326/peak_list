@@ -12,7 +12,7 @@
     <link rel="icon" href="../myfavicon.ico"/>
     <meta name="google" content="notranslate" />
 
-    <title>Search</title>
+    <title>Mountain Search | RangeFinder</title>
     <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("navigation.php", function(data){

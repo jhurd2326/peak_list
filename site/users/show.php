@@ -74,11 +74,11 @@
           <?php if(check_login($dbh) && $_SESSION["user_id"] != $user["id"]): ?>
             <?php if(user_following($_SESSION["user_id"], $user["id"], $dbh)): ?>
               <div>
-                <button class="btn-sm btn-outline-primary mx-0"><b>Following</b></button>
+                <a class="btn btn-outline-primary mx-3" href=<?php echo("unfollow.php?user=" . $user["id"]); ?>><b>Unfollow</b></a>
               </div>
             <?php else: ?>
               <div>
-                <a href=<?php echo("follow.php?user=" . $user["id"]); ?> class="btn btn-sm btn-primary mx-0"><b>Follow</b></a>
+                <a href=<?php echo("follow.php?user=" . $user["id"]); ?> class="btn btn-primary mx-3"><b>Follow</b></a>
               </div>
             <?php endif; ?>
           <?php endif; ?>

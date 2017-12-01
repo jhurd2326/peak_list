@@ -6,7 +6,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login</title>
+    <title>
+      <?php
+        if(!check_login($dbh))
+          echo "Login | RangeFinder";
+        else
+          echo "Home | RangeFinder";
+      ?>
+    </title>
     <link rel="icon" href="myfavicon.ico"/>
     <link rel="stylesheet" href="stylesheets/custom.css" />
     <link rel="stylesheet" href="stylesheets/hover.css" />

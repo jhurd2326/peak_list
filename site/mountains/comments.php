@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Comments</title>
+    <title>Comments | RangeFinder</title>
     <link rel="icon" href="../myfavicon.ico"/>
     <link rel="stylesheet" href="../stylesheets/custom.css" />
   </head>

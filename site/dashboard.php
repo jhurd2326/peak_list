@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dashboard</title>
+    <title>Dashboard | RangeFinder</title>
     <link rel="icon" href="myfavicon.ico"/>
     <meta name="google" content="notranslate" />
 

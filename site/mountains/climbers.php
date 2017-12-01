@@ -18,7 +18,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Climbers</title>
+    <title>Climbers | RangeFinder</title>
 
     <link rel="icon" href="../myfavicon.ico"/>
     <link rel="stylesheet" href="../stylesheets/custom.css" />
@@ -62,7 +62,7 @@
                             <?php if(check_login($dbh) && $_SESSION["user_id"] != $user["id"]): ?>
                               <?php if(user_following($_SESSION["user_id"], $user["id"], $dbh)): ?>
                                 <div>
-                                  <button class="btn-sm btn-outline-primary mx-0"><b>Following</b></button>
+                                  <a class="btn btn-sm btn-outline-primary mx-0" href=<?php echo("../users/unfollow.php?user=" . $user["id"]); ?>><b>Unfollow</b></a>
                                 </div>
                               <?php else: ?>
                                 <div>

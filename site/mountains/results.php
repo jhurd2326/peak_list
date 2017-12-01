@@ -26,7 +26,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Search</title>
+    <title>Mountain Search | RangeFinder</title>
     <link rel="icon" href="../myfavicon.ico"/>
     <meta name="google" content="notranslate" />
 

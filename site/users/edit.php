@@ -28,7 +28,7 @@
       });
     </script>
 
-    <title><?php echo $user["username"], " | RangeFinder"; ?></title>
+    <title><?php echo "Edit " . $user["username"], " | RangeFinder"; ?></title>
 
     <link rel="stylesheet" href="../stylesheets/custom.css" />
     <link rel="stylesheet" href="../stylesheets/font-awesome.css" />

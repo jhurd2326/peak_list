@@ -23,7 +23,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Backup</title>
+    <title>Admin | RangeFinder</title>
     <link rel="icon" href="../myfavicon.ico"/>
     <link rel="stylesheet" href="../stylesheets/custom.css" />
     <link rel="stylesheet" href="../stylesheets/hover.css" />

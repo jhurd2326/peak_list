@@ -29,7 +29,7 @@
       });
     </script>
 
-    <title><?php echo $mountain["name"] . " | RangeFinder"; ?></title>
+    <title><?php echo "Edit " . $mountain["name"] . " | RangeFinder"; ?></title>
 
     <link rel="stylesheet" href="../stylesheets/custom.css" />
     <link rel="stylesheet" href="../stylesheets/font-awesome.css" />

@@ -13,7 +13,7 @@
     <meta name="google" content="notranslate" />
 
 
-    <title>Search</title>
+    <title>User Search | RangeFinder</title>
     <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("navigation.php", function(data){
