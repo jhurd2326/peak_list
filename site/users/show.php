@@ -124,7 +124,7 @@
 
             <div class="row">
               <div class="col">
-                <p><?php echo $user["biography"];?></p>
+                <p class="text-justify"><?php echo $user["biography"];?></p>
               </div>
             </div>
           </div>
