@@ -13,6 +13,7 @@
   <head>
     <title>Dashboard | RangeFinder</title>
     <link rel="icon" href="myfavicon.ico"/>
+    <link rel="stylesheet" href="stylesheets/font-awesome.css" />
     <meta name="google" content="notranslate" />
 
     <script src="javascripts/jquery-3.2.1.min.js"></script>

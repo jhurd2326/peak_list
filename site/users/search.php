@@ -39,6 +39,8 @@
     </script>
 
     <link rel="stylesheet" href="../stylesheets/custom.css" />
+    <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
+
   </head>
   <body>
 

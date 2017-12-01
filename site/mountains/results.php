@@ -27,6 +27,8 @@
   <head>
     <title>Mountain Search | RangeFinder</title>
     <link rel="icon" href="../myfavicon.ico"/>
+    <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
+
     <meta name="google" content="notranslate" />
 
 

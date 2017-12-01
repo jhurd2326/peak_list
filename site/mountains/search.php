@@ -36,7 +36,7 @@
             }
         }
     </script>
-
+    <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
     <link rel="stylesheet" href="../stylesheets/custom.css" />
   </head>
   <body>

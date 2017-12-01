@@ -9,7 +9,7 @@
     <title>Register | RangeFinder</title>
     <link rel="stylesheet" href="stylesheets/custom.css"  />
     <link rel="icon" href="myfavicon.ico"/>
-
+    <link rel="stylesheet" href="stylesheets/font-awesome.css" />
 
     <script src="javascripts/jquery-3.2.1.min.js"></script>
       <script>
