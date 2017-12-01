@@ -1,3 +1,5 @@
 /dumps/*
 /site/api_keys/*
+/site/backups/*
+!/site/backups/.keep
 .DS_Store
