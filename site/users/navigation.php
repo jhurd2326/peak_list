@@ -5,17 +5,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar white">
     <div class="container">
 
-        <!-- Navbar brand -->
-        <?php if(check_login($dbh)): ?>
-          <img class = "mr-4" src=<?php echo "../img/navbar-logo.png"; ?> height="30" alt="RangeFinder">
-          <?php if (check_admin($_SESSION["user_id"], $dbh)):?>
-            <a class="navbar-brand" href=<?php echo "../index.php"; ?>><b>Admin</b></a>
-        <?php endif;?>
-        <?php else: ?>
-          <img class = "mr-4" src=<?php echo "../img/navbar-logo.png"; ?> height="30" alt="">
-          <a class="navbar-brand" href=<?php echo "../index.php"?>>Range Finder</a>
-        <?php endif; ?>
-
+      <img class = "mr-4" src=<?php echo "../img/navbar-logo.png"; ?> height="30" alt="RangeFinder">
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -72,9 +62,12 @@
 
             </ul>
 
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            </form>
+            <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh)): ?>
+                <h1 class="navbar-brand" href=<?php echo "../index.php"; ?>><b>Admin</b></h1>
+            <?php else: ?>
+                <a class="navbar-brand" href=<?php echo "../index.php"?>>Range Finder</a>
+            <?php endif; ?>
+
         </div>
 
     </div>
