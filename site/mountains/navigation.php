@@ -55,7 +55,7 @@
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</a>
                     <div class="dropdown-content dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="nav-link" href=<?php echo "../admin/backup.php?page=1"; ?>>DB Backups</a>
+                      <a class="nav-link" href=<?php echo "../admin/perform_backup.php"; ?>>DB Backup</a>
                     </div>
                   </li>
                 <?php endif; ?>
