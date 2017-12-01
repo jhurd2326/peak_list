@@ -122,7 +122,7 @@
   {
     if(empty(implode("", $params)))
     {
-      $sql = "SELECT * FROM mountains";
+      $sql = "SELECT * FROM mountains LIMIT 55000";
       if($query = $dbh -> prepare($sql))
       {
         if($query -> execute())
@@ -158,6 +158,7 @@
 
       $stmt = rtrim($sql, "and");
       if($sql == $stmt) return array();
+      $stmt = $stmt . " LIMIT 55000";
 
       if($query = $dbh -> prepare($stmt))
       {
