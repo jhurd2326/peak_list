@@ -2,17 +2,20 @@
   include_once "php/db_connect.php";
   include_once "php/functions.php";
 ?>
-
 <nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar white">
     <div class="container">
 
         <!-- Navbar brand -->
         <?php if(check_login($dbh)): ?>
           <img class = "mr-4" src="/img/navbar-logo.png" height="30" alt="RangeFinder">
+          <?php if (check_admin($_SESSION["user_id"], $dbh)):?>
+            <a class="navbar-brand" href="/index.php"><b>Admin</b></a>
+        <?php endif;?>
         <?php else: ?>
           <img class = "mr-4" src="/img/navbar-logo.png" height="30" alt="">
           <a class="navbar-brand" href="/index.php">Range Finder</a>
         <?php endif; ?>
+
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

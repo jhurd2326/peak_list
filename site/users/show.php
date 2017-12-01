@@ -16,6 +16,8 @@
   <head>
 
     <link rel="icon" href="/myfavicon.ico"/>
+    <meta name="google" content="notranslate" />
+
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("../navigation.php", function(data){
@@ -98,13 +100,16 @@
                 <?php endif; ?>
               </div>
             </div>
+            <hr>
             <div class="row">
-              <div class="col">
-              <hr><h3 class ="h3-responsive"><b>Biography</b></h3><hr>
-                <!-- Add bio here -->
-              </p>
+              <div class="col-8">
+                <h3 class ="h3-responsive"><b>Biography</b></h3>
+              </div>
+              <div class="col-4 text-right">
+                <a href="#" class = "custom-link"><b>Edit</b></a>
+              </div>
             </div>
-            </div>
+            <hr>
           </div>
           <div class = "col-sm-12  col-md-6 col-lg-6">
             <div class = "row">

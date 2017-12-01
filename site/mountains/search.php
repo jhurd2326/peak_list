@@ -10,6 +10,7 @@
 <html>
   <head>
     <link rel="icon" href="/myfavicon.ico"/>
+    <meta name="google" content="notranslate" />
 
     <title>Search</title>
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
@@ -58,7 +59,7 @@
         </div>
         <div class="row mt-5">
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <form action="results.php?page=1" method="post" name="mountain_search_form">
+                <form action="results.php?page=1" method="post" name="mountain_search_form" id="mountain_search_form">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="md-form">
@@ -97,13 +98,13 @@
                   <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                       <div class="md-form">
-                        <input type="number" name="max_elevation" id="max_elevation" class="form-control" />
+                        <input type="number" min="1" max="25000" name="max_elevation" id="max_elevation" class="form-control" />
                         <label for="max_elevation">Maximum Elevation</label>
                       </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                       <div class="md-form">
-                        <input type="number" name="min_elevation" id="min_elevation" class="form-control" />
+                        <input type="number" min="1" max="25000" name="min_elevation" id="min_elevation" class="form-control" />
                         <label for="min_elevation">Minimum Elevation</label>
                       </div>
                     </div>
@@ -125,7 +126,7 @@
                   </div>
 
                   <div class="text-center my-3">
-                    <input type="button" value="Search" onclick="this.form.submit();" class="btn btn-primary"/>
+                    <input type="submit" value="Search" class="btn btn-primary"/>
                   </div>
 
                 </form>

@@ -10,6 +10,8 @@
 <html>
   <head>
     <link rel="icon" href="/myfavicon.ico"/>
+    <meta name="google" content="notranslate" />
+
 
     <title>Search</title>
     <script src="/javascripts/jquery-3.2.1.min.js"></script>

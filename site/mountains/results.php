@@ -4,6 +4,7 @@
 
   if(!isset($_SESSION["mountains"]))
   {
+
     $_SESSION["mountains"] = search_mountains(array($_POST["name"], $_POST["state"], $_POST["country"],
       $_POST["latitude"], $_POST["longitude"], $_POST["max_elevation"], $_POST["min_elevation"]), $dbh);
   }
@@ -24,6 +25,8 @@
   <head>
     <title>Search</title>
     <link rel="icon" href="/myfavicon.ico"/>
+    <meta name="google" content="notranslate" />
+
 
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
       <script>
