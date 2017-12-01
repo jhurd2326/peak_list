@@ -19,7 +19,7 @@
 <html>
   <head>
     <title>Comments</title>
-    <link rel="icon" href="/myfavicon.ico"/>
+    <link rel="icon" href="../myfavicon.ico"/>
     <link rel="stylesheet" href="../stylesheets/custom.css" />
   </head>
   <body>

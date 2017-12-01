@@ -14,15 +14,15 @@
 <html>
   <head>
     <meta name="google" content="notranslate" />
-    <link rel="icon" href="/myfavicon.ico"/>
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <link rel="icon" href="../myfavicon.ico"/>
+    <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("../navigation.php", function(data){
           $("#nav-placeholder").replaceWith(data);
       });
     </script>
 
-    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
       $.get("../footer.php", function(data){
           $("#foot-placeholder").replaceWith(data);
@@ -184,7 +184,7 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <form action=<?php echo ("/php/new_comment.php?mountain=" . $mountain["id"]); ?> method="post" name="commment_form">
+                      <form action=<?php echo ("../php/new_comment.php?mountain=" . $mountain["id"]); ?> method="post" name="commment_form">
                         <div class="modal-body mx-3">
                           <div class="md-form">
                             <i class="fa fa-comments-o prefix"></i>
@@ -217,7 +217,7 @@
             <?php foreach($comments as $comment) { ?>
               <div class="row px-4 white-text">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 px-2">
-                  <a class ="comments-button" href=<?php echo "/users/show.php?id=" . $comment["user_id"]; ?>>
+                  <a class ="comments-button" href=<?php echo "../users/show.php?id=" . $comment["user_id"]; ?>>
                     <b><?php echo ($comment["username"]); ?></b>
                   </a>
                   <small><?php echo (" " . time_elapsed_string($comment["created_at"])); ?></small>

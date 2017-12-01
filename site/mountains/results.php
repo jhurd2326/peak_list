@@ -24,7 +24,7 @@
 <html>
   <head>
     <title>Search</title>
-    <link rel="icon" href="/myfavicon.ico"/>
+    <link rel="icon" href="../myfavicon.ico"/>
     <meta name="google" content="notranslate" />
 
 

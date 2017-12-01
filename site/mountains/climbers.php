@@ -20,6 +20,7 @@
   <head>
     <title>Climbers</title>
 
+    <link rel="icon" href="../myfavicon.ico"/>
     <link rel="stylesheet" href="../stylesheets/custom.css" />
     <link rel="stylesheet" href="../stylesheets/font-awesome.css" />
   </head>
@@ -53,7 +54,7 @@
                           <div class="d-flex col-12 justify-content-between">
                             <span>
                               <i class="mx-2 fa fa-user-circle-o" aria-hidden="true" style="font-size: 150%"></i>
-                              <a class = "custom-link" href=<?php echo "/users/show.php?id=" . $user["id"];?>>
+                              <a class = "custom-link" href=<?php echo "../users/show.php?id=" . $user["id"];?>>
                                 <b><?php echo ($user["username"]); ?></b>
                               </a>
                               <small><?php echo (" climbed it " . time_elapsed_string($user["created_at"])); ?></small>
@@ -65,7 +66,7 @@
                                 </div>
                               <?php else: ?>
                                 <div>
-                                  <a href=<?php echo("/users/follow.php?user=" . $user["id"]); ?> class="btn btn-sm btn-primary mx-0"><b>Follow</b></a>
+                                  <a href=<?php echo("../users/follow.php?user=" . $user["id"]); ?> class="btn btn-sm btn-primary mx-0"><b>Follow</b></a>
                                 </div>
                               <?php endif; ?>
                             <?php endif; ?>
