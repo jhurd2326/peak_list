@@ -218,6 +218,10 @@ html, body, .background, .background2, .background-white{
 .card-body-register{
 }
 
+.nav-link:hover{
+  color: #4285F4 !important;
+}
+
 /*.card-body-register::-webkit-scrollbar{
   display: block !important;
 }*/
