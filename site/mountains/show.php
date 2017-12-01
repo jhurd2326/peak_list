@@ -17,7 +17,7 @@
     <link rel="icon" href="../myfavicon.ico"/>
     <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
-      $.get("../navigation.php", function(data){
+      $.get("navigation.php", function(data){
           $("#nav-placeholder").replaceWith(data);
       });
     </script>
@@ -64,7 +64,7 @@
                     <h2 class="h2-responsive" style="color: Black;"><strong><?php echo $mountain["name"]; ?></strong></h2>
                   </div>
                   <div>
-                    <?php if(check_login($dbh) && ($_SESSION["user_id"] == $user["id"] || check_admin($_SESSION["user_id"], $dbh)) ): ?>
+                    <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) ): ?>
                       <a href=<?php echo("edit.php?id=" . $mountain["id"]); ?> class="custom-link"><b>Edit</b></a>
                     <?php endif; ?>
                     <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) ): ?>

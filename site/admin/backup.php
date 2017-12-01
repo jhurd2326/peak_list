@@ -7,7 +7,7 @@
   foreach($dir as $file)
     if(substr($file, 0, 1) !== ".")
       array_push($files, $file);
-      
+
   $files = array_reverse($files);
   $page_number = 0;
   $limit = 5;
@@ -31,7 +31,7 @@
 
     <script src="../javascripts/jquery-3.2.1.min.js"></script>
       <script>
-      $.get("../navigation.php", function(data){
+      $.get("navigation.php", function(data){
           $("#nav-placeholder").replaceWith(data);
       });
     </script>

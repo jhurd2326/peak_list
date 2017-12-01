@@ -7,6 +7,9 @@
     $command = "mysqldump --host={$db_host} --password={$db_password} --user={$db_username} ".
                "--databases {$db_name} > ../backups/backup-" . date('YmdHis') . ".sql";
     exec($command);
+
+    $command = "chmod -R o+rx ../backups";
+    exec($command);
     header("Location: backup.php");
   }
   else { echo "Error: Permission Denied"; }
