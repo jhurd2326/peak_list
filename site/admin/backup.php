@@ -2,7 +2,7 @@
   include_once "../php/db_connect.php";
   include_once "../php/functions.php";
 
-  $dir = scandir( "../backups");
+  $dir = scandir( "../../backups");
   $files = array();
   foreach($dir as $file)
     if(substr($file, 0, 1) !== ".")
@@ -84,7 +84,7 @@
                     <?php foreach($curr_files as $file) { ?>
                       <div class="row list-item mx-2">
                         <div class="d-flex col-12 justify-content-between">
-                          <a class="custom-link" href=<?php echo "../backups/" . $file; ?>>
+                          <a class="custom-link" href=<?php echo "download.php?file=" . $file; ?>>
                             <i class="fa fa-database mr-3" aria-hidden="true"></i>
                             <b><?php echo $file ?></b>
                           </a>

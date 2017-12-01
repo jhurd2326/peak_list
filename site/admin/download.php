@@ -9,10 +9,13 @@
 
   if( check_login($dbh) && check_admin($_SESSION["user_id"], $dbh) )
   {
-    $command = "rm ../../backups/" . $file;
-    exec($command);
+    $command = "cat ../../backups/" . $file;
+    $output = NULL;
+    exec($command, $output);
 
-    header("Location: backup.php");
+    header("Content-type: text/plain");
+    header("Content-Disposition: attachment; filename=backup-" . date("YmdHis") . ".sql");
+    echo implode("\n", $output);
   }
   else { echo "Error: Permission Denied"; }
 ?>
