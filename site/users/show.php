@@ -5,7 +5,7 @@
   if(isset($_GET["id"]))
   {
     $user = find_user($_GET["id"], $dbh);
-    $recent = recent_climbs($_GET["id"], $dbh);
+    $recent = array_slice(user_climbs($_GET["id"], $dbh), 0, 5);
 
   }
   else
@@ -160,15 +160,17 @@
                           <p><b>Following:</b></p>
                         </div>
                         <div class ="col">
-                          <?php
-                            $following = find_following_count($user["id"], $dbh);
-                            if($following == 1)
-                              $following = $following . " user";
-                            else
-                              $following = $following . " users";
+                          <a class="custom-link" href=<?php echo "following.php?page=1&user=" . $user["id"]; ?>>
+                            <?php
+                              $following = find_following_count($user["id"], $dbh);
+                              if($following == 1)
+                                $following = $following . " user";
+                              else
+                                $following = $following . " users";
 
-                            echo $following;
-                          ?>
+                              echo $following;
+                            ?>
+                          </a>
                         </div>
                       </div><hr>
                       <div class ="row">
@@ -176,32 +178,38 @@
                           <p><b>Followed By:</b></p>
                         </div>
                         <div class ="col">
-                          <?php
-                            $follower = find_follower_count($user["id"], $dbh);
-                            if($follower == 1)
-                              $follower = $follower . " user";
-                            else
-                              $follower = $follower . " users";
+                          <a class="custom-link" href=<?php echo "followers.php?page=1&user=" . $user["id"]; ?>>
+                            <?php
+                              $follower = find_follower_count($user["id"], $dbh);
+                              if($follower == 1)
+                                $follower = $follower . " user";
+                              else
+                                $follower = $follower . " users";
 
-                            echo $follower;
-                          ?>
+                              echo $follower;
+                            ?>
+                          </a>
                         </div>
                       </div><hr>
                       <div class ="row">
                         <div class = "col">
-                          <p><b>Total Mountains Climbed:</b></p>
+                          <p><b>Mountains Climbed:</b></p>
                         </div>
                         <div class ="col">
-                          <p> <?php echo find_climb_count($user["id"], $dbh); ?></p>
+                          <a class="custom-link" href=<?php echo "climbs.php?page=1&user=" . $user["id"]; ?>>
+                            <p> <?php echo find_climb_count($user["id"], $dbh); ?></p>
+                          </a>
                         </div>
                       </div><hr>
 
                       <div class ="row">
                         <div class = "col">
-                          <p><b>Total Likes:</b></p>
+                          <p><b>Mountains Liked:</b></p>
                         </div>
                         <div class ="col">
-                          <p> <?php echo find_like_count($user["id"], $dbh); ?></p>
+                          <a class="custom-link" href=<?php echo "likes.php?page=1&user=" . $user["id"]; ?>>
+                            <p> <?php echo find_like_count($user["id"], $dbh); ?></p>
+                          </a>
                         </div>
                       </div><hr>
 

@@ -152,17 +152,6 @@ html, body, .background, .background2, .background-white{
   margin-top: 16px;
 }
 
-.mountain-details {
-  height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-.dashboard-details {
-  height: 75vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
 .mountain-stats {
   color: #4285F4;
   padding-top: 8px;

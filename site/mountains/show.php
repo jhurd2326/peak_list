@@ -99,7 +99,7 @@
                 </div>
               <?php endif; ?>
 
-              <div class="mountain-details" style="position: relative;">
+              <div class="mountain-details">
                 <!--  Mountain Information  -->
 
                 <div class="row">

@@ -221,11 +221,31 @@
     else { return array(); }
   }
 
-  /*** Returns the users mountain information for show.php***/
-  function recent_climbs($user_id, $dbh){
-    $sql = "SELECT id, name, created_at FROM mountain_users INNER JOIN mountains
+  /*** Returns the mountains that the specified user has climbed ***/
+  function user_climbs($user_id, $dbh){
+    $sql = "SELECT * FROM mountain_users INNER JOIN mountains
      ON mountain_users.mountain_id = mountains.id WHERE mountain_users.user_id
-     = :user_id ORDER BY created_at DESC LIMIT 5";
+     = :user_id ORDER BY created_at DESC";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":user_id", $user_id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
+  /*** Returns the mountains that the specified user has liked ***/
+  function user_likes($user_id, $dbh){
+    $sql = "SELECT * FROM mountain_ratings INNER JOIN mountains
+     ON mountain_ratings.mountain_id = mountains.id WHERE mountain_ratings.user_id
+     = :user_id ORDER BY created_at DESC";
     if($query = $dbh -> prepare($sql))
     {
       $query -> bindValue(":user_id", $user_id);
@@ -570,6 +590,43 @@
     else { return false; }
   }
 
+  /*** Return the users that are followed by the specified user ***/
+  function get_user_following($user_id, $dbh)
+  {
+    $sql = "SELECT * FROM relationships INNER JOIN users ON relationships.followed_id = users.id WHERE follower_id = :id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $user_id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
+
+  /*** Return the users that follow the specified user ***/
+  function get_user_followers($user_id, $dbh)
+  {
+    $sql = "SELECT * FROM relationships INNER JOIN users ON relationships.follower_id = users.id WHERE followed_id = :id";
+    if($query = $dbh -> prepare($sql))
+    {
+      $query -> bindValue(":id", $user_id);
+      if($query -> execute())
+      {
+        if($query -> rowCount() > 0)
+          return $query -> fetchAll();
+        else
+          return array();
+      }
+      else { return array(); }
+    }
+    else { return array(); }
+  }
   /*** Display the pagination links for the given array, page number, and limit ***/
   function display_pagination($arr, $page_number, $limit, $url)
   {

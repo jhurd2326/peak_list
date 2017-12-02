@@ -3,11 +3,15 @@
   include_once "../php/functions.php";
 
   if(isset($_GET["id"]))
+  {
     $user = find_user($_GET["id"], $dbh);
+    $recent = array_slice(user_climbs($user["id"], $dbh), 0, 5);
+  }
   else
+  {
     $user = array();
-
-  $recent = recent_climbs($user["id"], $dbh);
+    $recent = array();
+  }
 
 ?>
 
