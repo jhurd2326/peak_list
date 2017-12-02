@@ -4,8 +4,16 @@
 
   if(!isset($_SESSION["mountains"]))
   {
-    $_SESSION["mountains"] = search_mountains(array($_POST["name"], $_POST["state"], $_POST["country"],
-      $_POST["latitude"], $_POST["longitude"], $_POST["max_elevation"], $_POST["min_elevation"]), $dbh);
+    $name = isset($_POST["name"]) ? $_POST["name"] : "";
+    $state = isset($_POST["state"]) ? $_POST["state"] : "";
+    $country = isset($_POST["country"]) ? $_POST["country"] : "";
+    $latitude = isset($_POST["latitude"]) ? $_POST["latitude"] : "";
+    $longitude = isset($_POST["longitude"]) ? $_POST["longitude"] : "";
+    $max_elevation = isset($_POST["max_elevation"]) ? $_POST["max_elevation"] : "";
+    $min_elevation = isset($_POST["min_elevation"]) ? $_POST["min_elevation"] : "";
+
+    $_SESSION["mountains"] = search_mountains(array($name, $state, $country,
+      $latitude, $longitude, $max_elevation, $min_elevation), $dbh);
   }
 
   $page_number = 0;
