@@ -10,7 +10,7 @@
 
   $files = array_reverse($files);
   $page_number = 0;
-  $limit = 8;
+  $limit = 5;
 
   if(isset($_GET["page"]))
     $page_number = $_GET["page"];
@@ -58,7 +58,7 @@
 
     <div id= "nav-placeholder"></div>
     <div class="background-white animated fadeIn">
-      <div class="container h-100">
+      <div class="container h-100 my-5">
         <?php if(check_login($dbh) && check_admin($_SESSION["user_id"], $dbh)): ?>
           <div class="row flex-center">
             <div class="col-8">

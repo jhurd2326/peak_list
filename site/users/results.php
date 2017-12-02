@@ -49,7 +49,7 @@
     <div id= "nav-placeholder"></div>
 
     <div class="background animated fadeIn">
-      <div class="container py-5 h-100">
+      <div class="container py-5">
         <?php
           if(isset($_GET["error"]))
           {
