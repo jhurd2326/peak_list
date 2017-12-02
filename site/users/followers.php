@@ -26,7 +26,7 @@
   </head>
   <body>
     <div class="background">
-      <div class="container h-100">
+      <div class="container my-5">
         <?php
           if(isset($_GET["error"]))
           {
